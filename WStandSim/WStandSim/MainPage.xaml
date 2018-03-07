@@ -4,8 +4,10 @@
              xmlns:local="clr-namespace:WStandSim"
              x:Class="WStandSim.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
+	<Label Text="Welcome to Xamarin.Forms! Yo!" TextColor="Black"
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
+    <Button Text="Neues Spiel" VerticalOptions="Center"
+            HorizontalOptions="Center" />
 
 </ContentPage>
