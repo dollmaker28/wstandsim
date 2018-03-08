@@ -9,39 +9,48 @@
     <Import_RootNamespace>WStandSim</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Database\ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\UserDatabaseController.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Helper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Beer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Bread.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DBEntities.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Overview.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Lemonade.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Sausage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Overview.xaml.cs">
       <DependentUpon>Overview.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Stock.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Stock.xaml.cs">
       <DependentUpon>Stock.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Overview.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Overview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Stock.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Stock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
   </ItemGroup>
 </Project>

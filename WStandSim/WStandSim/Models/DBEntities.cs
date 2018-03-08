@@ -77,4 +77,18 @@ namespace WStandSim.Database
         public int TempFrom { get; set; }
         public int TempTo { get; set; }
     }
+
+    [Table("GameSaved")]
+    // Klasse für die Variable, ob bereits ein Spiel gestartet wurd
+    public class GameSaved
+    {
+        public int Id { get; set; }
+
+        // Standard-Wert wenn Spiel das erste Mal gestartet wird
+        public GameSaved()
+        {
+            IsGameSaved = false;
+        }
+        public bool IsGameSaved { get; set; }
+    }
 }

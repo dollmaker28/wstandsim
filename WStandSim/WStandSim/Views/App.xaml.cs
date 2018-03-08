@@ -7,6 +7,7 @@ using SQLite;
 
 using Xamarin.Forms;
 using WStandSim.Database;
+using WStandSim.Models;
 
 namespace WStandSim
 {

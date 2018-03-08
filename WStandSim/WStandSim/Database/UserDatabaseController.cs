@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using WStandSim.Models;
 using Xamarin.Forms;
 
 namespace WStandSim.Database
@@ -16,7 +18,11 @@ namespace WStandSim.Database
         public UserDatabaseController()
         {
             database = DependencyService.Get<ISQLite>().GetConnection();
+        }
 
+        // Erstellen der Tabellen
+        public void CreateTables()
+        {
             database.CreateTable<StoredItems>();
             database.CreateTable<ItemType>();
             database.CreateTable<ItemSalesQuota>();
@@ -24,6 +30,8 @@ namespace WStandSim.Database
             database.CreateTable<Weather>();
             database.CreateTable<Seasons>();
             database.CreateTable<SeasonTempRange>();
+            database.CreateTable<GameSaved>();
         }
+
     }
 }

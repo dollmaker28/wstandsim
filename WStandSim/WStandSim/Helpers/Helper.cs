@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WStandSim.Database;
+using WStandSim.Models;
 
 namespace WStandSim
 {
@@ -14,6 +15,7 @@ namespace WStandSim
         {
             // Instanzieren der Datenbank-Klasse
             UserDatabaseController db = new UserDatabaseController();
+            db.CreateTables();
         }
     }
 }
