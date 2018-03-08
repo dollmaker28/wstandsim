@@ -54,5 +54,19 @@ namespace WStandSim.Database
             database.Insert(seasonTempRange);
             database.Commit();
         }
+
+        // Artikel zum Verlauf einfügen
+        public void AddItemType(ItemType itemType)
+        {
+            database.Insert(itemType);
+            database.Commit();
+        }
+
+        // Verkaufsquote für die jeweiligen Artikel einfügen
+        public void AddItemSalesQuota(ItemSalesQuota itemSalesQuota)
+        {
+            database.Insert(itemSalesQuota);
+            database.Commit();
+        }
     }
 }
