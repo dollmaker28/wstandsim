@@ -16,13 +16,13 @@ namespace WStandSim
 		{
 			InitializeComponent();
 
-			MainPage = new WStandSim.MainPage();
+            MainPage = new NavigationPage(new MainPage());
+                //new WStandSim.MainPage();
 		}
 
 		protected override void OnStart ()
 		{
             // Handle when your app starts
-            UserDatabaseController db = new UserDatabaseController();
 		}
 
 		protected override void OnSleep ()
