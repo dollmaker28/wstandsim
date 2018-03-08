@@ -15,6 +15,7 @@ namespace WStandSim.Database
 
         SQLiteConnection database;
 
+        // DB-Verbindung aufbauen
         public UserDatabaseController()
         {
             database = DependencyService.Get<ISQLite>().GetConnection();
@@ -33,5 +34,25 @@ namespace WStandSim.Database
             database.CreateTable<GameSaved>();
         }
 
+        // Finanzen einfügen
+        public void AddFinance(Finance finance)
+        {
+            database.Insert(finance);
+            database.Commit();
+        }
+
+        // Jahreszeiten einfügen
+        public void AddSeason(Seasons season)
+        {
+            database.Insert(season);
+            database.Commit();
+        }
+
+        // Jahreszeit-Temperaturbereiche einfügen
+        public void AddSeasonTempRange(SeasonTempRange seasonTempRange)
+        {
+            database.Insert(seasonTempRange);
+            database.Commit();
+        }
     }
 }
