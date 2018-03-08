@@ -18,8 +18,14 @@ namespace WStandSim
         // Button "Neues Spiel"
         async private void Button_ClickedNewGame(object sender, EventArgs e)
         {
-            UserDatabaseController db = new UserDatabaseController();
+            // Instanzieren der Helper-Klasse
+            Helper h = new Helper();
+            // Aufruf der Initializer
+            h.Initializer();
+
+            // Hilfsmethode um zu sehen, ob der Button was macht
             DisplayMessage();
+            // Wechseln der Ansicht
             await Navigation.PushAsync(new Overview());
         }
 
@@ -33,6 +39,7 @@ namespace WStandSim
         // Button "Spiel fortsetzen"
         async private void Button_ClickedContinue(object sender, EventArgs e)
         {
+            // Wechsel der Ansicht
             await Navigation.PushAsync(new Overview());
         }
 

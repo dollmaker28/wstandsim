@@ -18,6 +18,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Database\ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\UserDatabaseController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -26,9 +27,19 @@
       <DependentUpon>Overview.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Stock.xaml.cs">
+      <DependentUpon>Stock.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Overview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Stock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
