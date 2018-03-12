@@ -23,105 +23,221 @@ namespace WStandSim
 
             // Jahreszeiten einfügen. Ruft Methode in UserDatabaseController auf und übergibt das Objekt
             #region Seasons
-            Seasons seasons = new Seasons();
-            seasons.Id = 1; seasons.SeasonsText = "Frühling"; seasons.TempFrom = 10; seasons.TempTo = 24;
+            Seasons seasons = new Seasons
+            {
+                Id = 1,
+                SeasonsText = "Frühling",
+                TempFrom = 10,
+                TempTo = 24
+            };
             db.AddSeason(seasons);
 
-            seasons = new Seasons();
-            seasons.Id = 2; seasons.SeasonsText = "Sommer"; seasons.TempFrom = 20; seasons.TempTo = 38;
+            seasons = new Seasons
+            {
+                Id = 2,
+                SeasonsText = "Sommer",
+                TempFrom = 20,
+                TempTo = 38
+            };
             db.AddSeason(seasons);
 
-            seasons = new Seasons();
-            seasons.Id = 3; seasons.SeasonsText = "Herbst"; seasons.TempFrom = 7; seasons.TempTo = 24;
+            seasons = new Seasons
+            {
+                Id = 3,
+                SeasonsText = "Herbst",
+                TempFrom = 7,
+                TempTo = 24
+            };
             db.AddSeason(seasons);
 
-            seasons = new Seasons();
-            seasons.Id = 4; seasons.SeasonsText = "Winter"; seasons.TempFrom = -10; seasons.TempTo = 13;
+            seasons = new Seasons
+            {
+                Id = 4,
+                SeasonsText = "Winter",
+                TempFrom = -10,
+                TempTo = 13
+            };
             db.AddSeason(seasons);
             #endregion
 
             // Drei Zeilen für die "Buchhaltung" einfügen. Ruft Methode in UserDatabaseControler auf und übergibt das Objekt
             #region Finance
-            Finance finance = new Finance();
-            finance.Id = 1; finance.Amount = 500; finance.AssetLabel = "currentBalance";
+            Finance finance = new Finance
+            {
+                Id = 1,
+                Amount = 500,
+                AssetLabel = "currentBalance"
+            };
             db.AddFinance(finance);
 
-            finance = new Finance();
-            finance.Id = 2; finance.Amount = 0; finance.AssetLabel = "receiptsYesterday";
+            finance = new Finance
+            {
+                Id = 2,
+                Amount = 0,
+                AssetLabel = "receiptsYesterday"
+            };
             db.AddFinance(finance);
 
-            finance = new Finance();
-            finance.Id = 3; finance.Amount = 0; finance.AssetLabel = "expendituresYesterday";
+            finance = new Finance
+            {
+                Id = 3,
+                Amount = 0,
+                AssetLabel = "expendituresYesterday"
+            };
             db.AddFinance(finance);
             #endregion
 
             // Temperaturbereiche für die jeweiligen Jahreszeiten einfügen
             #region SeasonTempRange
-            SeasonTempRange seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 1; seasonTempRange.SeasonTempRangeWeatherText = "Heute ist es bewölkt. Die Tageshöchsttemperaturen bewegen sich zwischen 12 und 14 Grad."; seasonTempRange.SeasonId = 1; seasonTempRange.TempFrom = 10; seasonTempRange.TempTo = 14;
+            SeasonTempRange seasonTempRange = new SeasonTempRange
+            {
+                Id = 1,
+                SeasonTempRangeWeatherText = "Heute ist es bewölkt. Die Tageshöchsttemperaturen bewegen sich zwischen 12 und 14 Grad.",
+                SeasonId = 1,
+                TempFrom = 10,
+                TempTo = 14
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 2; seasonTempRange.SeasonTempRangeWeatherText = "Im Laufe des Tages lockert es auf und wir bekommen maximal 19 Grad."; seasonTempRange.SeasonId = 1; seasonTempRange.TempFrom = 15; seasonTempRange.TempTo = 19;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 2,
+                SeasonTempRangeWeatherText = "Im Laufe des Tages lockert es auf und wir bekommen maximal 19 Grad.",
+                SeasonId = 1,
+                TempFrom = 15,
+                TempTo = 19
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 3; seasonTempRange.SeasonTempRangeWeatherText = "Heute lacht die Sonne den ganzen Tag und beschert uns angenehme 20 bis 24 Grad."; seasonTempRange.SeasonId = 1; seasonTempRange.TempFrom = 20; seasonTempRange.TempTo = 24;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 3,
+                SeasonTempRangeWeatherText = "Heute lacht die Sonne den ganzen Tag und beschert uns angenehme 20 bis 24 Grad.",
+                SeasonId = 1,
+                TempFrom = 20,
+                TempTo = 24
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 4; seasonTempRange.SeasonTempRangeWeatherText = "Nach einer kühlen Nacht, können wir mit Maximaltemperaturen von bis zu 26 Grad rechnen."; seasonTempRange.SeasonId = 2; seasonTempRange.TempFrom = 20; seasonTempRange.TempTo = 26;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 4,
+                SeasonTempRangeWeatherText = "Nach einer kühlen Nacht, können wir mit Maximaltemperaturen von bis zu 26 Grad rechnen.",
+                SeasonId = 2,
+                TempFrom = 20,
+                TempTo = 26
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 5; seasonTempRange.SeasonTempRangeWeatherText = "Heute wird es schwül und heiß bei 27 bis 32 Grad."; seasonTempRange.SeasonId = 2; seasonTempRange.TempFrom = 27; seasonTempRange.TempTo = 32;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 5,
+                SeasonTempRangeWeatherText = "Heute wird es schwül und heiß bei 27 bis 32 Grad.",
+                SeasonId = 2,
+                TempFrom = 27,
+                TempTo = 32
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 6; seasonTempRange.SeasonTempRangeWeatherText = "Glühende Hitze und Temperaturen um den Siedepunkt machen uns heute die Hölle heiß."; seasonTempRange.SeasonId = 2; seasonTempRange.TempFrom = 33; seasonTempRange.TempTo = 38;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 6,
+                SeasonTempRangeWeatherText = "Glühende Hitze und Temperaturen um den Siedepunkt machen uns heute die Hölle heiß.",
+                SeasonId = 2,
+                TempFrom = 33,
+                TempTo = 38
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 7; seasonTempRange.SeasonTempRangeWeatherText = "Warme Socken und ein Schal sind heute sicher nicht verkehrt bei nassen 7 bis 13 Grad."; seasonTempRange.SeasonId = 3; seasonTempRange.TempFrom = 7; seasonTempRange.TempTo = 13;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 7,
+                SeasonTempRangeWeatherText = "Warme Socken und ein Schal sind heute sicher nicht verkehrt bei nassen 7 bis 13 Grad.",
+                SeasonId = 3,
+                TempFrom = 7,
+                TempTo = 13
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 8; seasonTempRange.SeasonTempRangeWeatherText = "Anfangs regnet es noch. Später lockert es auf und die Sonne kommt teilweise durch."; seasonTempRange.SeasonId = 3; seasonTempRange.TempFrom = 14; seasonTempRange.TempTo = 18;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 8,
+                SeasonTempRangeWeatherText = "Anfangs regnet es noch. Später lockert es auf und die Sonne kommt teilweise durch.",
+                SeasonId = 3,
+                TempFrom = 14,
+                TempTo = 18
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 9; seasonTempRange.SeasonTempRangeWeatherText = "Der Herbst zeigt sich heute von seiner schönsten Seite und beschert und angenehme 19 bis 24 Grad."; seasonTempRange.SeasonId = 3; seasonTempRange.TempFrom = 19; seasonTempRange.TempTo = 24;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 9,
+                SeasonTempRangeWeatherText = "Der Herbst zeigt sich heute von seiner schönsten Seite und beschert und angenehme 19 bis 24 Grad.",
+                SeasonId = 3,
+                TempFrom = 19,
+                TempTo = 24
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 10; seasonTempRange.SeasonTempRangeWeatherText = "Heute heißt es \"zieht euch warm an!\" bei frostigen -10 bis maximal -3 Grad."; seasonTempRange.SeasonId = 4; seasonTempRange.TempFrom = -10; seasonTempRange.TempTo = -3;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 10,
+                SeasonTempRangeWeatherText = "Heute heißt es \"zieht euch warm an!\" bei frostigen -10 bis maximal -3 Grad.",
+                SeasonId = 4,
+                TempFrom = -10,
+                TempTo = -3
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 11; seasonTempRange.SeasonTempRangeWeatherText = "Ein kalter Wintermorgen. Teilweise bricht die Sonne durch und bring uns bis zu 5 Grad."; seasonTempRange.SeasonId = 4; seasonTempRange.TempFrom = -2; seasonTempRange.TempTo = 5;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 11,
+                SeasonTempRangeWeatherText = "Ein kalter Wintermorgen. Teilweise bricht die Sonne durch und bring uns bis zu 5 Grad.",
+                SeasonId = 4,
+                TempFrom = -2,
+                TempTo = 5
+            };
             db.AddSeasonTempRange(seasonTempRange);
 
-            seasonTempRange = new SeasonTempRange();
-            seasonTempRange.Id = 12; seasonTempRange.SeasonTempRangeWeatherText = "Man könnte heute schon fast die kurzen Hosen auspacken bei bis zu 13 Grad."; seasonTempRange.SeasonId = 4; seasonTempRange.TempFrom = 6; seasonTempRange.TempTo = 13;
+            seasonTempRange = new SeasonTempRange
+            {
+                Id = 12,
+                SeasonTempRangeWeatherText = "Man könnte heute schon fast die kurzen Hosen auspacken bei bis zu 13 Grad.",
+                SeasonId = 4,
+                TempFrom = 6,
+                TempTo = 13
+            };
             db.AddSeasonTempRange(seasonTempRange);
             #endregion
 
             // Artikel anlegen
             #region ItemType
-            ItemType itemtype = new ItemType();
-            itemtype.Id = 1; itemtype.ItemTypeName = "Wurst";
+            ItemType itemtype = new ItemType
+            {
+                Id = 1,
+                ItemTypeName = "Wurst"
+            };
             db.AddItemType(itemtype);
 
-            itemtype = new ItemType();
-            itemtype.Id = 2; itemtype.ItemTypeName = "Brot";
+            itemtype = new ItemType
+            {
+                Id = 2,
+                ItemTypeName = "Brot"
+            };
             db.AddItemType(itemtype);
 
-            itemtype = new ItemType();
-            itemtype.Id = 3; itemtype.ItemTypeName = "Bier";
+            itemtype = new ItemType
+            {
+                Id = 3,
+                ItemTypeName = "Bier"
+            };
             db.AddItemType(itemtype);
 
-            itemtype = new ItemType();
-            itemtype.Id = 4; itemtype.ItemTypeName = "Limonade";
+            itemtype = new ItemType
+            {
+                Id = 4,
+                ItemTypeName = "Limonade"
+            };
             db.AddItemType(itemtype);
             #endregion
 

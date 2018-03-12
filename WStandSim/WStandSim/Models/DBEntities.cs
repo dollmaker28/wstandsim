@@ -17,6 +17,7 @@ namespace WStandSim.Database
         public int Id { get; set; }
         [Indexed]
         public int Bestbefore { get; set; }
+        [Indexed]
         public int ItemTypeId { get; set; }
     }
 

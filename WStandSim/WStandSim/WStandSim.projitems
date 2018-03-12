@@ -9,10 +9,16 @@
     <Import_RootNamespace>WStandSim</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)BaseData\BaseDataItemSalesQuota.txt" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)BaseData\BaseDataFinance.txt" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)BaseData\BaseDataWeather.txt" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)BaseData\BaseDataSeasonTempRange.txt" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)BaseData\BaseDataItemType.txt" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\App.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TestClasses\Command.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -52,5 +58,8 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)BaseData\BaseDataSeasons.txt" />
   </ItemGroup>
 </Project>

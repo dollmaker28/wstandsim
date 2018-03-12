@@ -18,6 +18,12 @@ namespace WStandSim
         // Button "Neues Spiel"
         async private void Button_ClickedNewGame(object sender, EventArgs e)
         {
+            // TODO:
+            // Button nach dem Drücken deaktivieren und danach wieder aktivieren,
+            // damit man nicht öfter hintereinander den Button drücken kann.
+            // Foto am Handy! - Commandbinding. Funktion im XAML nennt sich "command"
+            
+
             // Instanzieren der Helper-Klasse
             Helper h = new Helper();
             // Aufruf der Initializer
@@ -25,6 +31,7 @@ namespace WStandSim
 
             // Hilfsmethode um zu sehen, ob der Button was macht
             DisplayMessage();
+
             // Wechseln der Ansicht
             await Navigation.PushAsync(new Overview());
         }
@@ -42,7 +49,6 @@ namespace WStandSim
             // Wechsel der Ansicht
             await Navigation.PushAsync(new Overview());
         }
-
         
     }
 }
