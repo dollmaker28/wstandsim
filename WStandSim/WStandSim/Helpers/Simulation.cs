@@ -17,6 +17,13 @@ namespace WStandSim.Helpers
             db.SetCurrentDayAndSeasonNewDay();
         }
 
+        public string Result
+        {
+            get
+            {
+                return CalculateWeather().ToString();
+            }
+        }
         public string CalculateWeather()
         {
             string result = db.GetCurrentDayWeather();

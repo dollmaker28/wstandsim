@@ -2,11 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WStandSim.Overview"
-             BackgroundColor="Blue">
+             BackgroundColor="Blue"
+             xmlns:s="clr-namespace:WStandSim.Simulation">
+    <!--<Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Tag starten" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" TextColor="Yellow"/-->
     <ContentPage.Content>
-        <StackLayout>
-            <Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Tag starten" VerticalOptions="Center"
-            HorizontalOptions="Center" BackgroundColor="Black" TextColor="Yellow"/>
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Top Left" Grid.Row="0" Grid.Column="0" />
+            <Label Text="Top Right" Grid.Row="0" Grid.Column="1" />
+            <Label Text="Middle Left" Grid.Row="1" Grid.Column="0" />
+            <Label BackgroundColor="Brown" Text="{Binding Path=Simulation.Result}" Grid.Row="0" Grid.Column="1" />
+            <Label Text="Bottom Left" Grid.Row="3" Grid.Column="0" />
+            <Label Text="Bottom Right" Grid.Row="3" Grid.Column="1" />
+            <Label Text="Middle Right" Grid.Row="1" Grid.Column="1" />
+            <Button Clicked="Button_ClickedContinue" Text="Tag starten" Grid.Row="3" Grid.ColumnSpan="2"  BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

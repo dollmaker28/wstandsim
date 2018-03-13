@@ -12,16 +12,16 @@ namespace WStandSim
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Overview : ContentPage
 	{
-		public Overview ()
+        // Instanzierung der Klasse Simulation
+        Simulation s = new Simulation();
+
+        public Overview ()
 		{
 			InitializeComponent ();
-		}
+        }
 
         private void Button_ClickedContinue(object sender, EventArgs e)
         {
-            // Instanzierung der Klasse Simulation
-            Simulation s = new Simulation();
-
             s.CalculateWeather();
             s.SimulateNewDayAndSeason();
         }
