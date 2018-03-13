@@ -5,7 +5,7 @@
              BackgroundColor="Blue">
     <ContentPage.Content>
         <StackLayout>
-            <Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Spiel fortsetzen" VerticalOptions="Center"
+            <Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Tag starten" VerticalOptions="Center"
             HorizontalOptions="Center" BackgroundColor="Black" TextColor="Yellow"/>
         </StackLayout>
     </ContentPage.Content>

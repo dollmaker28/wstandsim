@@ -11,10 +11,16 @@ namespace WStandSim.Helpers
         // Instanzierung des DB-Controllers
         UserDatabaseController db = new UserDatabaseController();
 
-        // Berechnung der Jahreszeit und des aktuellen Tages
+        // Berechnung der Jahreszeit für den kommenden Tag
         public void SimulateNewDayAndSeason()
         {
             db.SetCurrentDayAndSeasonNewDay();
+        }
+
+        public string CalculateWeather()
+        {
+            string result = db.GetCurrentDayWeather();
+            return result;
         }
     }
 }

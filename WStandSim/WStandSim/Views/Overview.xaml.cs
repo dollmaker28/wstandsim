@@ -22,6 +22,7 @@ namespace WStandSim
             // Instanzierung der Klasse Simulation
             Simulation s = new Simulation();
 
+            s.CalculateWeather();
             s.SimulateNewDayAndSeason();
         }
     }

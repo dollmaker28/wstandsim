@@ -78,10 +78,28 @@ namespace WStandSim.Database
         }
 
         // Aktuellen Tag auswerten
-        public int GetCurrentDay()
+        public string GetCurrentDayWeather()
         {
-            var day = database.Table<SeasonDays>().FirstOrDefault().DaysInSeason;
-            return day;
+            // Befüllen der Variablen
+            int day = database.Table<SeasonDays>().FirstOrDefault().DaysInSeason;
+            int seasonID = database.Table<SeasonDays>().FirstOrDefault().CurrentSeasonID;
+            int tempFrom = 14;// database.Execute("SELECT TempFrom FROM Seasons where Id = ?", seasonID);
+
+            //var a = database.Table<Seasons>().Where(v => v.Id.Equals(seasonID));
+
+            int tempTo = 22;// database.Execute("SELECT TempTo FROM Seasons where Id = ?", seasonID);
+
+            // Random für Wetterberechnung anhand der aktuellen Jahreszeit
+            Random rnd = new Random();
+            int seasonTemperature = rnd.Next(tempFrom, tempTo);
+
+            // Rückgabe der Wettervorhersage
+            string weatherText = "TEST";//database.Execute("SELECT SeasonTempRangeWeatherText FROM SeasonTempRange where SeasonID = ? and TempFrom <= ? and TempTo >= ?", seasonID, tempFrom, tempTo).ToString();
+            // Rückgabe der aktuellen Jahreszeit
+            string seasonText = "TEST"; //= database.Execute("SELECT SeasonsText from Seasons where Id = ?", seasonID).ToString();
+
+            return $"Heutiges Wetter: {weatherText}, aktuelle Jahreszeit: {seasonText}, aktueller Tag: {day}";
+            //return "a";
         }
 
         // Tägliches Update für Jahreszeit und Tag
@@ -104,7 +122,7 @@ namespace WStandSim.Database
                 // Tag auf 1 zurücksetzen
                 database.Execute("UPDATE SeasonDays SET DaysInSeason = ?", 1);
                 // eine Jahreszeit dazu
-                database.Execute("UPDATE CurrentSeasonID SET DaysInSeason = ?", seasonID++);
+                database.Execute("UPDATE SeasonDays SET CurrentSeasonID = ?", seasonID++);
             }
             // Wenn Winter und der 20. Tag erreicht ist
             else if (seasonID == 4 && daysInSeason == 20)
@@ -112,11 +130,11 @@ namespace WStandSim.Database
                 // Tag auf 1 zurücksetzen
                 database.Execute("UPDATE SeasonDays SET DaysInSeason = ?", 1);
                 // Jahreszeit auf Frühling zurücksetzen
-                database.Execute("UPDATE CurrentSeasonID SET DaysInSeason = ?", 1);
+                database.Execute("UPDATE SeasonDays SET CurrentSeasonID = ?", 1);
             }
         }
 
-        // Vermerken, dass ein Spiel beegonnen wurde
+        // Vermerken, dass ein Spiel begonnen wurde
         public void SetGameIsSaved()
         {
             database.Execute("UPDATE GameSaved SET IsGameSaved = ?", true);

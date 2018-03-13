@@ -433,6 +433,11 @@ namespace WStandSim
             db.SetGameIsSaved();
             #endregion
 
+            // Wetter initial berechnen
+            #region GetCurrentDayWeather
+            db.GetCurrentDayWeather();
+            #endregion
+
         }
     }
 }
