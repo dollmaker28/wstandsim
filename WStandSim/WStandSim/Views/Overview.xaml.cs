@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using WStandSim.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,5 +16,13 @@ namespace WStandSim
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void Button_ClickedContinue(object sender, EventArgs e)
+        {
+            // Instanzierung der Klasse Simulation
+            Simulation s = new Simulation();
+
+            s.SimulateNewDayAndSeason();
+        }
+    }
 }

@@ -11,8 +11,7 @@
                 <!--Button aktivieren und dekaktivieren:-->
                 <!--https://forums.xamarin.com/discussion/47857/setting-buttons-isenabled-to-false-does-not-disable-button-->
         <Button Clicked="Button_ClickedNewGame" Margin="60" WidthRequest="200" Text="Neues Spiel" VerticalOptions="Center"
-            HorizontalOptions="Center" MinimumWidthRequest="40" BackgroundColor="Black" TextColor="Yellow" 
-                Command="{Binding StartCommand}" IsEnabled="{Binding StartEnabled}" />/>
+            HorizontalOptions="Center" MinimumWidthRequest="40" BackgroundColor="Black" TextColor="Yellow" />
         <!--Button für Spiel fortsetzen-->
         <Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Spiel fortsetzen" VerticalOptions="Center"
             HorizontalOptions="Center" BackgroundColor="Black" TextColor="Yellow"/>

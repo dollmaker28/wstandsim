@@ -32,6 +32,7 @@ namespace WStandSim.Database
             database.CreateTable<Seasons>();
             database.CreateTable<SeasonTempRange>();
             database.CreateTable<GameSaved>();
+            database.CreateTable<SeasonDays>();
         }
 
         // Finanzen einfügen
@@ -67,6 +68,58 @@ namespace WStandSim.Database
         {
             database.Insert(itemSalesQuota);
             database.Commit();
+        }
+
+        // Jahreszeit und Tag einfügen
+        public void AddSeasonDays(SeasonDays season)
+        {
+            database.Insert(season);
+            database.Commit();
+        }
+
+        // Aktuellen Tag auswerten
+        public int GetCurrentDay()
+        {
+            var day = database.Table<SeasonDays>().FirstOrDefault().DaysInSeason;
+            return day;
+        }
+
+        // Tägliches Update für Jahreszeit und Tag
+        public void SetCurrentDayAndSeasonNewDay()
+        {
+            // Daten aus Tabelle lesen
+            int seasonID = database.Table<SeasonDays>().FirstOrDefault().CurrentSeasonID;
+            int daysInSeason = database.Table<SeasonDays>().FirstOrDefault().DaysInSeason;
+
+            // Abfrage und Update
+            // Wenn Frühling, Sommer oder Herbst und 20 Tage noch nicht erreicht sind
+            if (daysInSeason < 20)
+            {
+                // ein Tag dazu
+                database.Execute("UPDATE SeasonDays SET DaysInSeason = DaysInSeason + ?", 1);
+            }
+            // Wenn Frühling, Sommer oder Herbst und der 20. Tag erreicht ist
+            else if ((seasonID == 1 || seasonID == 2 || seasonID == 3) && daysInSeason == 20)
+            {
+                // Tag auf 1 zurücksetzen
+                database.Execute("UPDATE SeasonDays SET DaysInSeason = ?", 1);
+                // eine Jahreszeit dazu
+                database.Execute("UPDATE CurrentSeasonID SET DaysInSeason = ?", seasonID++);
+            }
+            // Wenn Winter und der 20. Tag erreicht ist
+            else if (seasonID == 4 && daysInSeason == 20)
+            {
+                // Tag auf 1 zurücksetzen
+                database.Execute("UPDATE SeasonDays SET DaysInSeason = ?", 1);
+                // Jahreszeit auf Frühling zurücksetzen
+                database.Execute("UPDATE CurrentSeasonID SET DaysInSeason = ?", 1);
+            }
+        }
+
+        // Vermerken, dass ein Spiel beegonnen wurde
+        public void SetGameIsSaved()
+        {
+            database.Execute("UPDATE GameSaved SET IsGameSaved = ?", true);
         }
     }
 }

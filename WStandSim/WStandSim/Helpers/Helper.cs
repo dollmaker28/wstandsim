@@ -417,6 +417,21 @@ namespace WStandSim
 
             #endregion
 
+            // Jahreszeit Frühling und Tag 1 einfügen
+            #region SeasonDays
+            SeasonDays seasonDays = new SeasonDays
+            {
+                Id = 1,
+                CurrentSeasonID = 1,
+                DaysInSeason = 1
+            };
+            db.AddSeasonDays(seasonDays);
+            #endregion
+
+            // Gespeichertes Spiel vermerken
+            #region GameSaved
+            db.SetGameIsSaved();
+            #endregion
 
         }
     }

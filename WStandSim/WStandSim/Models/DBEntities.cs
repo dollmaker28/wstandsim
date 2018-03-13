@@ -92,4 +92,13 @@ namespace WStandSim.Database
         }
         public bool IsGameSaved { get; set; }
     }
+
+    [Table("SeasonDays")]
+    // Klasse um sich die aktuelle Jahreszeit und den Tag zu merken
+    public class SeasonDays
+    {
+        public int Id { get; set; }
+        public int CurrentSeasonID { get; set; }
+        public int DaysInSeason { get; set; }
+    }
 }
