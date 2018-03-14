@@ -29,10 +29,15 @@ namespace WStandSim
             // Hier muss die Kalkulation für die Verkäufe rein. Diese müssen vor der Neuberechnung des Wetters laufen!
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // TODO:
+            // Hier müssen die abgelaufenen Waren aus der Datenbank entfernt und der Verlust vermerkt werden.
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             // Instanzierung der Klasse Simulation
             Simulation s = new Simulation();
 
-            s.ReturnWeather.ToString();
+            //s.ReturnWeather.ToString();
             BindingContext = s;
             // Tag und ev. Jahreszeit um 1 nach vorne setzen
             s.SimulateNewDayAndSeason();

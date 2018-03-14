@@ -125,8 +125,7 @@ namespace WStandSim.Database
             Weather newWeather = new Weather(day, seasonID, tempFrom, tempTo, seasonTemperature, weatherText, tempLow, tempHigh, seasonText);
             // und abspeichern
             AddWeather(newWeather);
-            //return $"Wettervorhersage: {weatherText}, aktuelle Jahreszeit: {seasonText}, aktueller Tag: {day}, Tageshöchstemperatur: {tempHigh}, Tagestiefsttemperatur: {tempLow}";
-        }
+         }
 
         // Wettervorhersage aus Tabelle Weather
         public string WeatherForecast()
