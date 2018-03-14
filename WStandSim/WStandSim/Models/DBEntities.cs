@@ -80,7 +80,7 @@ namespace WStandSim.Database
             this.SeasonTemperature = seasonTemperature;
             this.WeeatherText = weatherText;
             this.TempLow = tempLow;
-            this.TempHigh = TempHigh;
+            this.TempHigh = tempHigh;
             this.SeasonText = seasonText;
         }
     }
