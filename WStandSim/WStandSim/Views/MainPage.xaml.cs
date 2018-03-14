@@ -29,19 +29,16 @@ namespace WStandSim
             // Aufruf der Initializer
             h.Initializer();
 
-            // Hilfsmethode um zu sehen, ob der Button was macht
-            DisplayMessage();
-
             // Wechseln der Ansicht
             await Navigation.PushAsync(new Overview());
         }
 
-        // Hilfsklasse für die Überprüfung ob der Button was macht. Kann wieder gelöscht werden.
-        // Aufruf in Button_ClickedNewGame
-        private void DisplayMessage()
-        {
-            DisplayAlert("Achtung!", "Die Datenbank wurde angelegt!", "Weiter...");
-        }
+        //// Hilfsklasse für die Überprüfung ob der Button was macht. Kann wieder gelöscht werden.
+        //// Aufruf in Button_ClickedNewGame
+        //private void DisplayMessage()
+        //{
+        //    DisplayAlert("Achtung!", "Die Datenbank wurde angelegt!", "Weiter...");
+        //}
 
         // Button "Spiel fortsetzen"
         async private void Button_ClickedContinue(object sender, EventArgs e)

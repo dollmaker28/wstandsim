@@ -21,6 +21,19 @@ namespace WStandSim.Database
             database = DependencyService.Get<ISQLite>().GetConnection();
         }
 
+        public void DropTables()
+        {
+            database.DropTable<StoredItems>();
+            database.DropTable<ItemType>();
+            database.DropTable<ItemSalesQuota>();
+            database.DropTable<Finance>();
+            database.DropTable<Weather>();
+            database.DropTable<Seasons>();
+            database.DropTable<SeasonTempRange>();
+            database.DropTable<GameSaved>();
+            database.DropTable<SeasonDays>();
+        }
+
         // Erstellen der Tabellen
         public void CreateTables()
         {
@@ -83,20 +96,17 @@ namespace WStandSim.Database
             // Befüllen der Variablen
             int day = database.Table<SeasonDays>().FirstOrDefault().DaysInSeason;
             int seasonID = database.Table<SeasonDays>().FirstOrDefault().CurrentSeasonID;
-            int tempFrom = 14;// database.Execute("SELECT TempFrom FROM Seasons where Id = ?", seasonID);
-
-            //var a = database.Table<Seasons>().Where(v => v.Id.Equals(seasonID));
-
-            int tempTo = 22;// database.Execute("SELECT TempTo FROM Seasons where Id = ?", seasonID);
+            int tempFrom = database.Table<Seasons>().FirstOrDefault(item => item.Id == seasonID).TempFrom;
+            int tempTo = database.Table<Seasons>().FirstOrDefault(item => item.Id == seasonID).TempTo;
 
             // Random für Wetterberechnung anhand der aktuellen Jahreszeit
             Random rnd = new Random();
             int seasonTemperature = rnd.Next(tempFrom, tempTo);
 
             // Rückgabe der Wettervorhersage
-            string weatherText = "TEST";//database.Execute("SELECT SeasonTempRangeWeatherText FROM SeasonTempRange where SeasonID = ? and TempFrom <= ? and TempTo >= ?", seasonID, tempFrom, tempTo).ToString();
+            string weatherText = database.Table<SeasonTempRange>().FirstOrDefault(item => item.SeasonId == seasonID && item.TempFrom <= seasonTemperature && item.TempTo >= seasonTemperature).SeasonTempRangeWeatherText;
             // Rückgabe der aktuellen Jahreszeit
-            string seasonText = "TEST"; //= database.Execute("SELECT SeasonsText from Seasons where Id = ?", seasonID).ToString();
+            string seasonText = database.Table<Seasons>().FirstOrDefault(item => item.Id == seasonID).SeasonsText;
 
             return $"Heutiges Wetter: {weatherText}, aktuelle Jahreszeit: {seasonText}, aktueller Tag: {day}";
             //return "a";

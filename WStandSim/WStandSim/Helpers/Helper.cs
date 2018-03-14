@@ -17,6 +17,7 @@ namespace WStandSim
         {
             // Instanzieren der Datenbank-Klasse
             UserDatabaseController db = new UserDatabaseController();
+            db.DropTables();
             db.CreateTables();
 
             // TODO: Tabellen mit Default-Werten befüllen
