@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WStandSim.Overview"
              BackgroundColor="Blue"
-             xmlns:s="clr-namespace:WStandSim.Simulation">
+             xmlns:s="clr-namespace:WStandSim.Helpers">
     <!--<Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Tag starten" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" TextColor="Yellow"/-->
     <ContentPage.Content>
         <Grid>
@@ -19,7 +19,7 @@
             <Label Text="Top Left" Grid.Row="0" Grid.Column="0" />
             <Label Text="Top Right" Grid.Row="0" Grid.Column="1" />
             <Label Text="Middle Left" Grid.Row="1" Grid.Column="0" />
-            <Label BackgroundColor="Brown" Text="{Binding Path=Simulation.Result}" Grid.Row="0" Grid.Column="1" />
+            <Label BackgroundColor="Brown" Text="{Binding Path=Simulation.ReturnWeather}" Grid.Row="0" Grid.Column="1" />
             <Label Text="Bottom Left" Grid.Row="3" Grid.Column="0" />
             <Label Text="Bottom Right" Grid.Row="3" Grid.Column="1" />
             <Label Text="Middle Right" Grid.Row="1" Grid.Column="1" />

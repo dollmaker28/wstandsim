@@ -18,6 +18,7 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Database\DBBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Simulation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestClasses\Command.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">

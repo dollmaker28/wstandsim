@@ -53,9 +53,36 @@ namespace WStandSim.Database
     // Klasse für Wetter
     public class Weather
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string WeatherNextDay { get; set; }
-        public int SeasonTempRangeId { get; set; }
+        public int Day { get; set; }
+        public int SeasonID { get; set; }
+        public int TempFrom { get; set; }
+        public int TempTo { get; set; }
+        public int SeasonTemperature { get; set; }
+        public string WeeatherText { get; set; }
+        public int TempLow { get; set; }
+        public int TempHigh { get; set; }
+        public string SeasonText { get; set; }
+
+        // Parameterloser Konstruktor
+        public Weather()
+        {
+
+        }
+        // Konstruktor
+        public Weather(int day, int seasonID, int tempFrom, int tempTo, int seasonTemperature, string weatherText, int tempLow, int tempHigh, string seasonText)
+        {
+            this.Day = day;
+            this.SeasonID = seasonID;
+            this.TempFrom = tempFrom;
+            this.TempTo = tempTo;
+            this.SeasonTemperature = seasonTemperature;
+            this.WeeatherText = weatherText;
+            this.TempLow = tempLow;
+            this.TempHigh = TempHigh;
+            this.SeasonText = seasonText;
+        }
     }
 
     // Klasse für die Jahreszeiten

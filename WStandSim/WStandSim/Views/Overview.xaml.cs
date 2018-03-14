@@ -3,27 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WStandSim.Database;
 using WStandSim.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WStandSim
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Overview : ContentPage
-	{
-        // Instanzierung der Klasse Simulation
-        Simulation s = new Simulation();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Overview : ContentPage
+    {
 
-        public Overview ()
-		{
-			InitializeComponent ();
+        public Overview()
+        {
+            InitializeComponent();
         }
 
         private void Button_ClickedContinue(object sender, EventArgs e)
         {
-            s.CalculateWeather();
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // TODO:
+            // Hier muss die Kalkulation für die Verkäufe rein. Diese müssen vor der Neuberechnung des Wetters laufen!
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Instanzierung der Klasse Simulation
+            Simulation s = new Simulation();
+            // Tag und ev. Jahreszeit um 1 nach vorne setzen
             s.SimulateNewDayAndSeason();
+            // und Wetter für den kommenden Tag neu berechnen.
+            s.CalculateNewWeather();
         }
     }
 }

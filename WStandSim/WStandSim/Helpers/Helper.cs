@@ -436,7 +436,7 @@ namespace WStandSim
 
             // Wetter initial berechnen
             #region GetCurrentDayWeather
-            db.GetCurrentDayWeather();
+            db.CalculateCurrentDayWeather();
             #endregion
 
         }

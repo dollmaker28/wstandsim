@@ -90,9 +90,18 @@ namespace WStandSim.Database
             database.Commit();
         }
 
-        // Aktuellen Tag auswerten
-        public string GetCurrentDayWeather()
+        // Wetter für morgen einfügen und merken
+        public void AddWeather(Weather weather)
         {
+            database.Insert(weather);
+            database.Commit();
+        }
+
+        // Wetter für kommenden Tag berechnen und speichern
+        public void CalculateCurrentDayWeather()
+        {
+            // aktuelles Wetter löschen und neu berechnen
+            database.Execute("DELETE FROM Weather");
             // Befüllen der Variablen
             int day = database.Table<SeasonDays>().FirstOrDefault().DaysInSeason;
             int seasonID = database.Table<SeasonDays>().FirstOrDefault().CurrentSeasonID;
@@ -105,14 +114,28 @@ namespace WStandSim.Database
 
             // Rückgabe der Wettervorhersage
             string weatherText = database.Table<SeasonTempRange>().FirstOrDefault(item => item.SeasonId == seasonID && item.TempFrom <= seasonTemperature && item.TempTo >= seasonTemperature).SeasonTempRangeWeatherText;
+            // Rückgabe der Tagestiefsttemperatur
+            int tempLow = database.Table<SeasonTempRange>().FirstOrDefault(item => item.SeasonId == seasonID && item.TempFrom <= seasonTemperature && item.TempTo >= seasonTemperature).TempFrom;
+            // Rückgabe der Tageshöchsttemperatur
+            int tempHigh = database.Table<SeasonTempRange>().FirstOrDefault(item => item.SeasonId == seasonID && item.TempFrom <= seasonTemperature && item.TempTo >= seasonTemperature).TempTo;
             // Rückgabe der aktuellen Jahreszeit
             string seasonText = database.Table<Seasons>().FirstOrDefault(item => item.Id == seasonID).SeasonsText;
 
-            return $"Heutiges Wetter: {weatherText}, aktuelle Jahreszeit: {seasonText}, aktueller Tag: {day}";
-            //return "a";
+            // neues Objekt aus den errechneten Werten erzeugen
+            Weather newWeather = new Weather(day, seasonID, tempFrom, tempTo, seasonTemperature, weatherText, tempLow, tempHigh, seasonText);
+            // und abspeichern
+            AddWeather(newWeather);
+            //return $"Wettervorhersage: {weatherText}, aktuelle Jahreszeit: {seasonText}, aktueller Tag: {day}, Tageshöchstemperatur: {tempHigh}, Tagestiefsttemperatur: {tempLow}";
         }
 
-        // Tägliches Update für Jahreszeit und Tag
+        // Wettervorhersage aus Tabelle Weather
+        public string WeatherForecast()
+        {
+            var w = database.Table<Weather>().ElementAt(0);
+            return $"{w.WeeatherText}, {w.TempHigh}, {w.TempLow}, {w.SeasonText}";
+        }
+
+        // Tag und Jahreszeit nach vorne setzen
         public void SetCurrentDayAndSeasonNewDay()
         {
             // Daten aus Tabelle lesen

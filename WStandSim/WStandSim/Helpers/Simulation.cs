@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using WStandSim.Database;
+using System.ComponentModel;
 
 namespace WStandSim.Helpers
 {
     // Klasse für die Simulation des gesamten Tages
-    class Simulation
+    class Simulation : DBBase
     {
         // Instanzierung des DB-Controllers
         UserDatabaseController db = new UserDatabaseController();
@@ -17,17 +18,13 @@ namespace WStandSim.Helpers
             db.SetCurrentDayAndSeasonNewDay();
         }
 
-        public string Result
+        // Wetter neu berechnen lassen
+        public void CalculateNewWeather()
         {
-            get
-            {
-                return CalculateWeather().ToString();
-            }
+            db.CalculateCurrentDayWeather();
         }
-        public string CalculateWeather()
-        {
-            string result = db.GetCurrentDayWeather();
-            return result;
-        }
+
+        // Ausgabe der Wettervorhersage
+        public string ReturnWeather => db.WeatherForecast();
     }
 }
