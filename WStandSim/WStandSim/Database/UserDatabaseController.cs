@@ -132,7 +132,7 @@ namespace WStandSim.Database
         public string WeatherForecast()
         {
             var w = database.Table<Weather>().ElementAt(0);
-            return $"{w.WeeatherText}, {w.TempHigh}, {w.TempLow}, {w.SeasonText}";
+            return $"{w.WeeatherText}, TagHöTemp:{w.TempHigh}, TagNiedTemp:{w.TempLow}, {w.SeasonText}, STemp:{w.SeasonTemperature}, Tag:{w.Day}";
         }
 
         // Tag und Jahreszeit nach vorne setzen
@@ -149,21 +149,34 @@ namespace WStandSim.Database
                 // ein Tag dazu
                 database.Execute("UPDATE SeasonDays SET DaysInSeason = DaysInSeason + ?", 1);
             }
-            // Wenn Frühling, Sommer oder Herbst und der 20. Tag erreicht ist
-            else if ((seasonID == 1 || seasonID == 2 || seasonID == 3) && daysInSeason == 20)
+            // Wenn der 20. Tag erreicht ist
+            else if (daysInSeason == 20)
             {
+                int newSeasonID;
+                // Abfrage auf die aktuelle Jahreszeit
+                switch (seasonID)
+                {
+                    case 1:
+                        newSeasonID = 2;
+                        break;
+                    case 2:
+                        newSeasonID = 3;
+                        break;
+                    case 3:
+                        newSeasonID = 4;
+                        break;
+                    case 4:
+                        newSeasonID = 1;
+                        break;
+                    default:
+                        newSeasonID = 1;
+                        break;
+                }
+
                 // Tag auf 1 zurücksetzen
                 database.Execute("UPDATE SeasonDays SET DaysInSeason = ?", 1);
                 // eine Jahreszeit dazu
-                database.Execute("UPDATE SeasonDays SET CurrentSeasonID = ?", seasonID++);
-            }
-            // Wenn Winter und der 20. Tag erreicht ist
-            else if (seasonID == 4 && daysInSeason == 20)
-            {
-                // Tag auf 1 zurücksetzen
-                database.Execute("UPDATE SeasonDays SET DaysInSeason = ?", 1);
-                // Jahreszeit auf Frühling zurücksetzen
-                database.Execute("UPDATE SeasonDays SET CurrentSeasonID = ?", 1);
+                database.Execute("UPDATE SeasonDays SET CurrentSeasonID = ?", newSeasonID);
             }
         }
 

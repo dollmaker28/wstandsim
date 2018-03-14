@@ -16,6 +16,9 @@ namespace WStandSim
 
         public Overview()
         {
+            Simulation s = new Simulation();
+            s.ReturnWeather.ToString();
+            BindingContext = s;
             InitializeComponent();
         }
 
@@ -28,6 +31,9 @@ namespace WStandSim
 
             // Instanzierung der Klasse Simulation
             Simulation s = new Simulation();
+
+            s.ReturnWeather.ToString();
+            BindingContext = s;
             // Tag und ev. Jahreszeit um 1 nach vorne setzen
             s.SimulateNewDayAndSeason();
             // und Wetter für den kommenden Tag neu berechnen.
