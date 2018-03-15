@@ -63,4 +63,13 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)BaseData\BaseDataSeasons.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\icons8-cash-register-64.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\icons8-checkout-64.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\icons8-down-button-64.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\icons8-hot-dog-40.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\icons8-hot-dog-48.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\icons8-slide-up-64.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\icons8-warehouse-64.png" />
+  </ItemGroup>
 </Project>

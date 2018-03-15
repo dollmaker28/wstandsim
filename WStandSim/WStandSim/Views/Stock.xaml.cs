@@ -16,5 +16,15 @@ namespace WStandSim
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void Button_ClickedCheckout(object sender, EventArgs e)
+        {
+
+        }
+
+        async private void Button_ClickedOverview(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new Overview());
+        }
+    }
 }

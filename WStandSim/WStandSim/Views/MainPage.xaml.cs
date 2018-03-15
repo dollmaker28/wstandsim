@@ -30,7 +30,7 @@ namespace WStandSim
             h.Initializer();
 
             // Wechseln der Ansicht
-            await Navigation.PushAsync(new Overview());
+            await Navigation.PushModalAsync(new Overview());
         }
 
         //// Hilfsklasse für die Überprüfung ob der Button was macht. Kann wieder gelöscht werden.
@@ -44,7 +44,7 @@ namespace WStandSim
         async private void Button_ClickedContinue(object sender, EventArgs e)
         {
             // Wechsel der Ansicht
-            await Navigation.PushAsync(new Overview());
+            await Navigation.PushModalAsync(new Overview());
         }
         
     }

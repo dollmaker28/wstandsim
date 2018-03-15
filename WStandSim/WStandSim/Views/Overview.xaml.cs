@@ -44,5 +44,11 @@ namespace WStandSim
             // und Wetter für den kommenden Tag neu berechnen.
             s.CalculateNewWeather();
         }
+
+
+        async private void Button_ClickedStock(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new Stock());
+        }
     }
 }

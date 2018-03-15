@@ -6,7 +6,6 @@ namespace WStandSim.Models
 {
     public class Lemonade : Item
     {
-        new string itemName;
         int dueDays;
         public Lemonade(string itemName) : base(itemName)
         {

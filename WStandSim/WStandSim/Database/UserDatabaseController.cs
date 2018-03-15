@@ -48,6 +48,18 @@ namespace WStandSim.Database
             database.CreateTable<SeasonDays>();
         }
 
+        // Artikel in StoredItems einfügen
+        public void AddStoredItems(StoredItems storedItems, int amount)
+        {
+            // Objekte in einer Schleife speichern
+            for (int i = amount; i < 1; i++)
+            {
+                database.Insert(storedItems);
+                database.Commit();
+            }
+            
+        }
+
         // Finanzen einfügen
         public void AddFinance(Finance finance)
         {
@@ -131,7 +143,7 @@ namespace WStandSim.Database
         public string WeatherForecast()
         {
             var w = database.Table<Weather>().ElementAt(0);
-            return $"{w.WeeatherText}, TagHöTemp:{w.TempHigh}, TagNiedTemp:{w.TempLow}, {w.SeasonText}, STemp:{w.SeasonTemperature}, Tag:{w.Day}";
+            return $"{w.WeatherText}\nTageshöchsttemperatur {w.TempHigh} Grad\nJahreszeit: {w.SeasonText}\nTag:{w.Day}";
         }
 
         // Tag und Jahreszeit nach vorne setzen

@@ -440,5 +440,11 @@ namespace WStandSim
             #endregion
 
         }
+
+        public void StoreItems(object obj, int amount)
+        {
+            UserDatabaseController db = new UserDatabaseController();
+            //db.AddStoredItems(obj, amount);
+        }
     }
 }

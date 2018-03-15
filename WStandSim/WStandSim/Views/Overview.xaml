@@ -3,11 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WStandSim.Overview"
              BackgroundColor="Blue"
-             xmlns:s="clr-namespace:WStandSim.Helpers">
-    <!--<Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Tag starten" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" TextColor="Yellow"/-->
+             xmlns:s="clr-namespace:WStandSim.Helpers"
+             xmlns:i="clr-namespace:WStandSim.Images">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="90" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -15,16 +20,17 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Text="Top Left" Grid.Row="0" Grid.Column="0" />
-            <!--<Label Text="Top Right" Grid.Row="0" Grid.Column="1" /-->
-            <Label TextColor="Wheat" Text="Middle Left" Grid.Row="1" Grid.Column="0" />
-            <Label TextColor="White" BackgroundColor="Brown" Text="{Binding ReturnWeather}" Grid.Row="0" Grid.Column="1" />
-            <Label Text="Bottom Left" Grid.Row="3" Grid.Column="0" />
-            <Label Text="Bottom Right" Grid.Row="3" Grid.Column="1" />
-            <Label Text="Middle Right" Grid.Row="1" Grid.Column="1" />
-            <Button Clicked="Button_ClickedContinue" Text="Tag starten" Grid.Row="3" Grid.ColumnSpan="2"  BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+            <Label TextColor="GreenYellow" BackgroundColor="Black" Text="{Binding ReturnWeather}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
+            <Label Text="Guthaben" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Start"/>
+            <Label Text="Einnahmen" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
+            <Label Text="Ausgaben" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="End"/>
+            <Label Text="500" TextColor="White" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Start"/>
+            <Label Text="0" TextColor="GreenYellow" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>
+            <Label Text="0" TextColor="Red" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="End"/>
+            <Button Clicked="Button_ClickedContinue" Text="Tag starten" Grid.Row="7" Grid.ColumnSpan="3"  BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+            <Button Text="zum Lager" Clicked="Button_ClickedStock" Grid.Row="3" Grid.Column="0" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
         </Grid>
-        
     </ContentPage.Content>
 </ContentPage>

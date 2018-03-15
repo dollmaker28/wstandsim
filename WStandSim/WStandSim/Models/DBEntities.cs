@@ -60,7 +60,7 @@ namespace WStandSim.Database
         public int TempFrom { get; set; }
         public int TempTo { get; set; }
         public int SeasonTemperature { get; set; }
-        public string WeeatherText { get; set; }
+        public string WeatherText { get; set; }
         public int TempLow { get; set; }
         public int TempHigh { get; set; }
         public string SeasonText { get; set; }
@@ -78,7 +78,7 @@ namespace WStandSim.Database
             this.TempFrom = tempFrom;
             this.TempTo = tempTo;
             this.SeasonTemperature = seasonTemperature;
-            this.WeeatherText = weatherText;
+            this.WeatherText = weatherText;
             this.TempLow = tempLow;
             this.TempHigh = tempHigh;
             this.SeasonText = seasonText;
