@@ -434,6 +434,18 @@ namespace WStandSim
             db.SetGameIsSaved();
             #endregion
 
+            // 1. Tag als int speichern
+            #region SaveDay
+            DayCount dayCount = new DayCount
+            {
+                Id = 1,
+                ActualDay = 1
+            };
+            db.SaveDay(dayCount);
+            
+
+            #endregion
+
             // Wetter initial berechnen
             #region GetCurrentDayWeather
             db.CalculateCurrentDayWeather();

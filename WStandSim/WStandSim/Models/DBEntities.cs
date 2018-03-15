@@ -128,4 +128,25 @@ namespace WStandSim.Database
         public int CurrentSeasonID { get; set; }
         public int DaysInSeason { get; set; }
     }
+
+    [Table("DayCount")]
+    // Klasse für die Gesamtzahl der gespielten Tage
+    // Wichtig für das Ablaufdatum der Produkte
+    public class DayCount
+    {
+        public int Id { get; set; }
+        public int ActualDay { get; set; }
+
+        // Konstruktor parameterlos
+        public DayCount()
+        {
+
+        }
+        // Konstruktor mit Parametern
+        public DayCount(int Id, int actualDay)
+        {
+            this.Id = Id;
+            this.ActualDay = actualDay;
+        }
+    }
 }

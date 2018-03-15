@@ -32,6 +32,7 @@ namespace WStandSim.Database
             database.DropTable<SeasonTempRange>();
             database.DropTable<GameSaved>();
             database.DropTable<SeasonDays>();
+            database.DropTable<DayCount>();
         }
 
         // Erstellen der Tabellen
@@ -46,6 +47,7 @@ namespace WStandSim.Database
             database.CreateTable<SeasonTempRange>();
             database.CreateTable<GameSaved>();
             database.CreateTable<SeasonDays>();
+            database.CreateTable<DayCount>();
         }
 
         // Artikel in StoredItems einfügen
@@ -189,12 +191,32 @@ namespace WStandSim.Database
                 // eine Jahreszeit dazu
                 database.Execute("UPDATE SeasonDays SET CurrentSeasonID = ?", newSeasonID);
             }
+
+            // Update der gesamten Spielzeit für Ablaufdatumsberechnung
+
+            // aktuell gespielten Tage aus der Db holen
+            int actualDay = database.Table<DayCount>().FirstOrDefault().ActualDay;
+            // inkrementieren
+            actualDay++;
+            // aktuellen Datensatz löschen
+            database.Execute("DELETE FROM DayCount");
+            // neues Objekt erzeugen
+            DayCount d = new DayCount(1, actualDay);
+            // und abspeichern
+            SaveDay(d);
         }
 
         // Vermerken, dass ein Spiel begonnen wurde
         public void SetGameIsSaved()
         {
             database.Execute("UPDATE GameSaved SET IsGameSaved = ?", true);
+        }
+
+        // Gesamte Spieltage
+        public void SaveDay(DayCount dayCount)
+        {
+            database.Insert(dayCount);
+            database.Commit();
         }
     }
 }

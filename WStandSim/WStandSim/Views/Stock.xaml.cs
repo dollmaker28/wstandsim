@@ -22,9 +22,10 @@ namespace WStandSim
 
         }
 
-        async private void Button_ClickedOverview(object sender, EventArgs e)
+        private void Button_ClickedOverview(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Overview());
+            base.OnBackButtonPressed();
+            //await Navigation.PushModalAsync(new Overview());
         }
     }
 }
