@@ -72,7 +72,4 @@
     <Content Include="$(MSBuildThisFileDirectory)Images\icons8-slide-up-64.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\icons8-warehouse-64.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)ClassDiagram1.cd" />
-  </ItemGroup>
 </Project>
