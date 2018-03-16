@@ -16,15 +16,17 @@ namespace WStandSim.Helpers
         public void SimulateNewDayAndSeason()
         {
             db.SetCurrentDayAndSeasonNewDay();
+            NotifyPropertyChanged("ReturnWeather");
         }
 
         // Wetter neu berechnen lassen
         public void CalculateNewWeather()
         {
             db.CalculateCurrentDayWeather();
+            NotifyPropertyChanged("ReturnWeather");
         }
 
         // Ausgabe der Wettervorhersage
-        public string ReturnWeather => db.WeatherForecast();
+        public string ReturnWeather { get { return db.WeatherForecast(); } }
     }
 }

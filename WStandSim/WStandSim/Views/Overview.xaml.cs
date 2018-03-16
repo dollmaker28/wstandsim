@@ -14,12 +14,13 @@ namespace WStandSim
     public partial class Overview : ContentPage
     {
 
+        Simulation s;
         public Overview()
         {
-            Simulation s = new Simulation();
+            InitializeComponent();
+            s = new Simulation();
             s.ReturnWeather.ToString();
             BindingContext = s;
-            InitializeComponent();
         }
 
         private void Button_ClickedContinue(object sender, EventArgs e)
@@ -35,13 +36,13 @@ namespace WStandSim
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // Instanzierung der Klasse Simulation
-            Simulation s = new Simulation();
+            //Simulation s = new Simulation();
 
-            //s.ReturnWeather.ToString();
-            BindingContext = s;
+            // und Wetter für den kommenden Tag neu berechnen.
+            // BindingContext
+            //BindingContext = s;
             // Tag und ev. Jahreszeit um 1 nach vorne setzen
             s.SimulateNewDayAndSeason();
-            // und Wetter für den kommenden Tag neu berechnen.
             s.CalculateNewWeather();
         }
 

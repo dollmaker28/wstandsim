@@ -19,8 +19,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Clicked="Button_ClickedCheckout" Text="Tag starten" Grid.Row="7" Grid.ColumnSpan="3"  BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
             <Button Text="zur Übersicht" Clicked="Button_ClickedOverview" Grid.Row="3" Grid.Column="0" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+            <!--ListView Grid.Row="4" ItemsSource="{Binding HIER MUSS DIE PROPERTY FÜR DIE ANZEIGE DER LISTE REIN}" /-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
