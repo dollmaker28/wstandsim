@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WStandSim.Helpers;
 using WStandSim.Models;
 using Xamarin.Forms;
 
@@ -14,6 +15,8 @@ namespace WStandSim.Database
         static object locker = new object();
 
         SQLiteConnection database;
+
+        
 
         // DB-Verbindung aufbauen
         public UserDatabaseController()
@@ -48,18 +51,6 @@ namespace WStandSim.Database
             database.CreateTable<GameSaved>();
             database.CreateTable<SeasonDays>();
             database.CreateTable<DayCount>();
-        }
-
-        // Artikel in StoredItems einfügen
-        public void AddStoredItems(StoredItems storedItems, int amount)
-        {
-            // Objekte in einer Schleife speichern
-            for (int i = amount; i < 1; i++)
-            {
-                database.Insert(storedItems);
-                database.Commit();
-            }
-            
         }
 
         // Finanzen einfügen
@@ -217,6 +208,56 @@ namespace WStandSim.Database
         {
             database.Insert(dayCount);
             database.Commit();
+        }
+
+        //Artikel speichern
+        public void SaveItemsToDB()
+        {
+            Simulation s = new Simulation();
+            // Würste einfügen
+            int x = s.sausages;
+            int d = database.Table<DayCount>().FirstOrDefault().ActualDay;
+            double a = 1.50; // Preis pro Wurst
+            d += 10;
+            for (int i = 0; i < x; i++)
+            {
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", d, 1);
+                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", a);
+            }
+
+            // Brot einfügen
+            x = s.bread;
+            d = database.Table<DayCount>().FirstOrDefault().ActualDay;
+            d += 5;
+            for (int i = 0; i < x; i++)
+            {
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", d, 2);
+            }
+
+            // Bier einfügen
+            x = s.beer;
+            d = database.Table<DayCount>().FirstOrDefault().ActualDay;
+            d += 15;
+            for (int i = 0; i < x; i++)
+            {
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", d, 3);
+            }
+
+            // Bier einfügen
+            x = s.lemonades;
+            d = database.Table<DayCount>().FirstOrDefault().ActualDay;
+            d += 15;
+            for (int i = 0; i < x; i++)
+            {
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", d, 4);
+            }
+        }
+
+        // Aktuellen Kontostand abrufen
+        public double SelectCurrentBalance()
+        {
+            double s = database.Table<Finance>().Where(a => a.AssetLabel == "currentBalance").FirstOrDefault().Amount;
+            return s;
         }
     }
 }

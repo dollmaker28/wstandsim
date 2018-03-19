@@ -8,7 +8,7 @@ namespace WStandSim.Helpers
 {
     // Klasse für die Simulation des gesamten Tages
     class Simulation : DBBase
-    {
+    {   
         // Instanzierung des DB-Controllers
         UserDatabaseController db = new UserDatabaseController();
 
@@ -45,7 +45,63 @@ namespace WStandSim.Helpers
         #endregion
 
         // Methode zum Erhöhen und Reduzieren der Artikel auf der Verkaufsseite
+        #region RaiseLower
+
+        // Methoden zum Erhöhen und Verringern der Werte
+        public void Raise(string item)
+        {
+            switch (item)
+            {
+                case "sausage":
+                    int a = sausages;
+                    Sausages = a + 1;
+                    break;
+                case "bread":
+                    int b = bread;
+                    Bread = b + 1;
+                    break;
+                case "beer":
+                    int c = beer;
+                    Beer = c + 1;
+                    break;
+                case "lemonade":
+                    int d = lemonades;
+                    Lemonades = d + 1;
+                    break;
+                default:
+                    int z = 0;
+                    break;
+            }
+        }
+
+        public void Lower(string item)
+        {
+            switch (item)
+            {
+                case "sausage":
+                    int a = sausages;
+                    if (a == 0) { } else Sausages = a - 1;
+                    break;
+                case "bread":
+                    int b = bread;
+                    if (b == 0) { } else Bread = b - 1;
+                    break;
+                case "beer":
+                    int c = beer;
+                    if (c == 0) { } else Beer = c - 1;
+                    break;
+                case "lemonade":
+                    int d = lemonades;
+                    if (d == 0) { } else Lemonades = d - 1;
+                    break;
+                default:
+                    int z = 0;
+                    break;
+            }
+        }
         // Wurst
+
+        #region AlteMethoden (zum löschen)
         public void RaiseSausages()
         {
             int a = sausages;
@@ -88,6 +144,28 @@ namespace WStandSim.Helpers
         {
             int a = lemonades;
             if (a == 0) { } else Lemonades = a - 1;
+        }
+        #endregion
+
+        #endregion
+
+        //Kaufen
+        public void Buy()
+        {
+            db.SaveItemsToDB();
+            Sausages = 0;
+            Bread = 0;
+            Beer = 0;
+            Lemonades = 0;
+        }
+
+        // Aktueller Kontostand
+        private double currentBalance;
+        // Property für aktuellen Kontostand
+        public double CurrentBalance
+        {
+            get { return currentBalance; }
+            set { currentBalance = db.SelectCurrentBalance(); ; NotifyPropertyChanged(); }
         }
     }
 }

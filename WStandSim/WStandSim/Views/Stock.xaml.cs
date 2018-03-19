@@ -34,42 +34,50 @@ namespace WStandSim
         #region UpDownButtons
         private void Button_ClickedSausageUP(object sender, EventArgs e)
         {
-            s.RaiseSausages();
+            //s.RaiseSausages();
+            s.Raise("sausage");
         }
         private void Button_ClickedSausageDOWN(object sender, EventArgs e)
         {
-            s.LowerSausages();
+            //s.LowerSausages();
+            s.Lower("sausage");
         }
         private void Button_ClickedBreadUP(object sender, EventArgs e)
         {
-            s.RaiseBread();
+            //s.RaiseBread();
+            s.Raise("bread");
         }
         private void Button_ClickedBreadDOWN(object sender, EventArgs e)
         {
-            s.LowerBread();
+            //s.LowerBread();
+            s.Lower("bread");
         }
         private void Button_ClickedBeerUP(object sender, EventArgs e)
         {
-            s.RaiseBeer();
+            //s.RaiseBeer();
+            s.Raise("beer");
         }
         private void Button_ClickedBeerDOWN(object sender, EventArgs e)
         {
-            s.LowerBeer();
+            //s.LowerBeer();
+            s.Lower("beer");
         }
         private void Button_ClickedLemonadeUp(object sender, EventArgs e)
         {
-            s.RaiseLemonades();
+            //s.RaiseLemonades();
+            s.Raise("lemonade");
         }
         private void Button_ClickedLemonadeDOWN(object sender, EventArgs e)
         {
-            s.Loweremonades();
+            //s.Loweremonades();
+            s.Lower("lemonade");
         }
         #endregion
 
         // Button Kaufen
         private void Button_ClickedBuy(object sender, EventArgs e)
         {
-
+            s.Buy();
         }
     }
 }

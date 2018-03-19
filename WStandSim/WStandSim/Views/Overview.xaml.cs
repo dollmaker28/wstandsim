@@ -15,12 +15,15 @@ namespace WStandSim
     {
 
         Simulation s;
+        UserDatabaseController u;
         public Overview()
         {
             InitializeComponent();
             s = new Simulation();
+            //u = new UserDatabaseController();
             s.ReturnWeather.ToString();
             BindingContext = s;
+            //u.SelectCurrentBalance();
         }
 
         private void Button_ClickedContinue(object sender, EventArgs e)

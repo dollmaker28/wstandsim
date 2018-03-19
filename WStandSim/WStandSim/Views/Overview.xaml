@@ -26,7 +26,7 @@
             <Label Text="Guthaben" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Start"/>
             <Label Text="Einnahmen" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
             <Label Text="Ausgaben" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="End"/>
-            <Label Text="500" TextColor="White" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Start"/>
+            <Label Text="{Binding CurrentBalance}" TextColor="White" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Start"/>
             <Label Text="0" TextColor="GreenYellow" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>
             <Label Text="0" TextColor="Red" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="End"/>
             <Button Clicked="Button_ClickedContinue" Text="Tag starten" Grid.Row="7" Grid.ColumnSpan="3"  BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
