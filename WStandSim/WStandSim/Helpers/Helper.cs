@@ -450,7 +450,6 @@ namespace WStandSim
             #region GetCurrentDayWeather
             db.CalculateCurrentDayWeather();
             #endregion
-
         }
     }
 }

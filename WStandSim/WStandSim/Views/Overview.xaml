@@ -4,6 +4,7 @@
              x:Class="WStandSim.Overview"
              BackgroundColor="Blue"
              xmlns:s="clr-namespace:WStandSim.Helpers"
+             xmlns:h="clr-namespace:WStandSim.Simulation"
              xmlns:i="clr-namespace:WStandSim.Images">
     <ContentPage.Content>
         <Grid>

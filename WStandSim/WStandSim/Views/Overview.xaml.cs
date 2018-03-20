@@ -15,7 +15,7 @@ namespace WStandSim
     {
 
         Simulation s;
-        UserDatabaseController u;
+        Stock stock;
         public Overview()
         {
             InitializeComponent();
@@ -23,8 +23,12 @@ namespace WStandSim
             //u = new UserDatabaseController();
             s.ReturnWeather.ToString();
             BindingContext = s;
+            stock = new Stock();
             //u.SelectCurrentBalance();
         }
+
+
+        
 
         private void Button_ClickedContinue(object sender, EventArgs e)
         {
@@ -52,7 +56,13 @@ namespace WStandSim
 
         async private void Button_ClickedStock(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Stock());
+            if (stock == null)
+            {
+                stock = new Stock();
+                await Navigation.PushModalAsync(stock);
+            }
+            else
+                await Navigation.PushModalAsync(stock);
         }
     }
 }

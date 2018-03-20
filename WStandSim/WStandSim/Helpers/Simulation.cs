@@ -152,11 +152,37 @@ namespace WStandSim.Helpers
         //Kaufen
         public void Buy()
         {
-            db.SaveItemsToDB();
+            // aktuellen Tag holen für Ablaufdatum
+            int actualDay = db.SelectActualDay();
+
+            // Artikel speichern und zurücksetzen
+            // Wurst
+            if(Sausages > 0)
+            {
+            db.SaveItemsToDB(Sausages, actualDay, 3.70, 1);
             Sausages = 0;
+            }
+            // Brot
+            if(Bread > 0)
+            {
+            db.SaveItemsToDB(Bread, actualDay, 0.50, 2);
             Bread = 0;
+            }
+            // Bier
+            if(Beer > 0)
+            {
+            db.SaveItemsToDB(Beer, actualDay, 2.50, 3);
             Beer = 0;
+            }
+            // Limonade
+            if(Lemonades > 0)
+            {
+            db.SaveItemsToDB(Lemonades, actualDay, 1.20, 4);
             Lemonades = 0;
+            }
+
+            // Currentbalance aktualisieren
+            CurrentBalance = db.SelectCurrentBalance();
         }
 
         // Aktueller Kontostand
@@ -164,8 +190,8 @@ namespace WStandSim.Helpers
         // Property für aktuellen Kontostand
         public double CurrentBalance
         {
-            get { return currentBalance; }
-            set { currentBalance = db.SelectCurrentBalance(); ; NotifyPropertyChanged(); }
+            get { currentBalance = db.SelectCurrentBalance();  return currentBalance; }
+            set { currentBalance = value; ; NotifyPropertyChanged();  }
         }
     }
 }

@@ -11,7 +11,6 @@ namespace WStandSim.Database
 {
     public class UserDatabaseController
     {
-
         static object locker = new object();
 
         SQLiteConnection database;
@@ -211,46 +210,43 @@ namespace WStandSim.Database
         }
 
         //Artikel speichern
-        public void SaveItemsToDB()
+        public void SaveItemsToDB(int itemAmount, int actualDay, double price, int itemTypeID)
         {
-            Simulation s = new Simulation();
             // Würste einfügen
-            int x = s.sausages;
-            int d = database.Table<DayCount>().FirstOrDefault().ActualDay;
-            double a = 1.50; // Preis pro Wurst
-            d += 10;
-            for (int i = 0; i < x; i++)
+            actualDay += 10; // Hält x Tage
+            if(itemTypeID == 1)
+            for (int i = 0; i < itemAmount; i++)
             {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", d, 1);
-                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", a);
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", actualDay, itemTypeID);
+                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
             }
 
             // Brot einfügen
-            x = s.bread;
-            d = database.Table<DayCount>().FirstOrDefault().ActualDay;
-            d += 5;
-            for (int i = 0; i < x; i++)
-            {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", d, 2);
-            }
+            actualDay += 5; // Hält x Tage
+            if (itemTypeID == 2)
+                for (int i = 0; i < itemAmount; i++)
+                {
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", actualDay, itemTypeID);
+                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                }
 
             // Bier einfügen
-            x = s.beer;
-            d = database.Table<DayCount>().FirstOrDefault().ActualDay;
-            d += 15;
-            for (int i = 0; i < x; i++)
-            {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", d, 3);
-            }
+            actualDay += 15; // Hält x Tage
+            if (itemTypeID == 3)
+                for (int i = 0; i < itemAmount; i++)
+                {
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", actualDay, itemTypeID);
+                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                }
 
-            // Bier einfügen
-            x = s.lemonades;
-            d = database.Table<DayCount>().FirstOrDefault().ActualDay;
-            d += 15;
-            for (int i = 0; i < x; i++)
-            {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", d, 4);
-            }
+            // Limonade einfügen
+            actualDay += 15; // Hält x Tage
+            if (itemTypeID == 4)
+                for (int i = 0; i < itemAmount; i++)
+                {
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", actualDay, itemTypeID);
+                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                }
         }
 
         // Aktuellen Kontostand abrufen
@@ -258,6 +254,13 @@ namespace WStandSim.Database
         {
             double s = database.Table<Finance>().Where(a => a.AssetLabel == "currentBalance").FirstOrDefault().Amount;
             return s;
+        }
+
+        // Aktuellen Tag zurückgeben
+        public int SelectActualDay()
+        {
+            int actualDay = database.Table<DayCount>().FirstOrDefault().ActualDay;
+            return actualDay;
         }
     }
 }
