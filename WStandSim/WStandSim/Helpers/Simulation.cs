@@ -190,8 +190,8 @@ namespace WStandSim.Helpers
         // Property für aktuellen Kontostand
         public double CurrentBalance
         {
-            get { currentBalance = db.SelectCurrentBalance();  return currentBalance; } 
-            set { currentBalance = value; ; NotifyPropertyChanged();  }
+            get { currentBalance = db.SelectCurrentBalance();  return this.currentBalance; } 
+            set { if (this.currentBalance != value) { this.currentBalance = value; ; this.NotifyPropertyChanged("CurrentBalance"); } }
         }
     }
 }

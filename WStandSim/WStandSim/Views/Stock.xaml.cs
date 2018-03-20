@@ -14,6 +14,7 @@ namespace WStandSim
 	{
         // Instanzierung
         Simulation s;
+        //Overview overview;
 
         // Initialisieren
         public Stock ()
@@ -21,13 +22,26 @@ namespace WStandSim
 			InitializeComponent ();
             s = new Simulation();
             BindingContext = s;
+            //overview = new Overview();
         }
 
         // Zurück
         private void Button_ClickedOverview(object sender, EventArgs e)
         {
-            base.OnBackButtonPressed();
-            //await Navigation.PushModalAsync(new Overview());
+            //if (overview == null)
+            //{
+            //    overview = new Overview();
+            //    await Navigation.PushModalAsync(overview);
+            //}
+            //else
+            //    await Navigation.PushModalAsync(overview);
+
+
+            //base.OnBackButtonPressed(Overview);
+            Navigation.PopModalAsync();
+            //var vUpdatedPage = new Overview();
+            //Navigation.InsertPageBefore(vUpdatedPage, this);
+            //Navigation.PopModalAsync();
         }
 
         // Buttons für Ein - Verkauf
@@ -78,6 +92,13 @@ namespace WStandSim
         private void Button_ClickedBuy(object sender, EventArgs e)
         {
             s.Buy();
+        }
+
+
+        private void Button_ClickedContinue(object sender, EventArgs e)
+        {
+            s.SimulateNewDayAndSeason();
+            s.CalculateNewWeather();
         }
     }
 } 
