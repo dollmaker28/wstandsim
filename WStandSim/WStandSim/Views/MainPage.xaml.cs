@@ -31,7 +31,7 @@ namespace WStandSim
 
             // Wechseln der Ansicht
             await Navigation.PushModalAsync(new Overview());
-        }
+        } 
 
         //// Hilfsklasse für die Überprüfung ob der Button was macht. Kann wieder gelöscht werden.
         //// Aufruf in Button_ClickedNewGame

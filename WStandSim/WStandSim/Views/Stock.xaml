@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!--Wurst-->
+                <!--Wurst--> 
                 <Button Text="↑" Clicked="Button_ClickedSausageUP" Grid.Column="0" Grid.Row="0" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Label Text="{Binding Sausages}" Grid.Column="0" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
                 <Button Text="↓" Clicked="Button_ClickedSausageDOWN" Grid.Column="0" Grid.Row="2" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>

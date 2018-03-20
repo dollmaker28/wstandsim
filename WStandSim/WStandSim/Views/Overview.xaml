@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions> 
             <Label TextColor="GreenYellow" BackgroundColor="Black" Text="{Binding ReturnWeather}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
             <Label Text="Guthaben" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Start"/>
             <Label Text="Einnahmen" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>

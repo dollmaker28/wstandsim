@@ -260,7 +260,7 @@ namespace WStandSim.Database
         public int SelectActualDay()
         {
             int actualDay = database.Table<DayCount>().FirstOrDefault().ActualDay;
-            return actualDay;
+            return actualDay; 
         }
     }
 }

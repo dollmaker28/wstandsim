@@ -49,7 +49,7 @@ namespace WStandSim
             // BindingContext
             //BindingContext = s;
             // Tag und ev. Jahreszeit um 1 nach vorne setzen
-            s.SimulateNewDayAndSeason();
+            s.SimulateNewDayAndSeason(); 
             s.CalculateNewWeather();
         }
 

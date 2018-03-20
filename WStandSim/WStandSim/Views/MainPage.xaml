@@ -16,5 +16,5 @@
         <Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Spiel fortsetzen" VerticalOptions="Center"
             HorizontalOptions="Center" BackgroundColor="Black" TextColor="Yellow"/>
         <Image x:Name="hotDogImage" />
-    </StackLayout>
+    </StackLayout> 
 </ContentPage>

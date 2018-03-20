@@ -80,4 +80,4 @@ namespace WStandSim
             s.Buy();
         }
     }
-}
+} 
