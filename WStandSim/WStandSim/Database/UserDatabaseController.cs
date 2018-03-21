@@ -122,11 +122,13 @@ namespace WStandSim.Database
             int tempLow = database.Table<SeasonTempRange>().FirstOrDefault(item => item.SeasonId == seasonID && item.TempFrom <= seasonTemperature && item.TempTo >= seasonTemperature).TempFrom;
             // Rückgabe der Tageshöchsttemperatur
             int tempHigh = database.Table<SeasonTempRange>().FirstOrDefault(item => item.SeasonId == seasonID && item.TempFrom <= seasonTemperature && item.TempTo >= seasonTemperature).TempTo;
+            // Rückgabe der SeasonTempRangeID für Berechnung der ItemSalesQuota
+            int seasonTempRangeID = database.Table<SeasonTempRange>().FirstOrDefault(item => item.SeasonId == seasonID && item.TempFrom <= seasonTemperature && item.TempTo >= seasonTemperature).Id;
             // Rückgabe der aktuellen Jahreszeit
             string seasonText = database.Table<Seasons>().FirstOrDefault(item => item.Id == seasonID).SeasonsText;
 
             // neues Objekt aus den errechneten Werten erzeugen
-            Weather newWeather = new Weather(day, seasonID, tempFrom, tempTo, seasonTemperature, weatherText, tempLow, tempHigh, seasonText);
+            Weather newWeather = new Weather(day, seasonID, tempFrom, tempTo, seasonTemperature, weatherText, tempLow, tempHigh, seasonText, seasonTempRangeID);
             // und abspeichern
             AddWeather(newWeather);
          }
@@ -209,7 +211,7 @@ namespace WStandSim.Database
             database.Commit();
         }
 
-        //Artikel speichern
+        //Artikel speichern => Einkauf
         public void SaveItemsToDB(int itemAmount, int actualDay, double price, int itemTypeID)
         {
             // Würste einfügen
@@ -252,8 +254,22 @@ namespace WStandSim.Database
         // Aktuellen Kontostand abrufen
         public double SelectCurrentBalance()
         {
-            double s = database.Table<Finance>().Where(a => a.AssetLabel == "currentBalance").FirstOrDefault().Amount;
-            return s;
+            double c = database.Table<Finance>().Where(a => a.AssetLabel == "currentBalance").FirstOrDefault().Amount;
+            return c;
+        }
+
+        // Einnahmen abrufen
+        public double SelectReceiptsYesterday()
+        {
+            double r = database.Table<Finance>().Where(a => a.AssetLabel == "receiptsYesterday").FirstOrDefault().Amount;
+            return r;
+        }
+
+        // Ausgaben abrufen
+        public double SelectExpendituresYesterday()
+        {
+            double e = database.Table<Finance>().Where(a => a.AssetLabel == "expendituresYesterday").FirstOrDefault().Amount;
+            return e;
         }
 
         // Aktuellen Tag zurückgeben
@@ -261,6 +277,33 @@ namespace WStandSim.Database
         {
             int actualDay = database.Table<DayCount>().FirstOrDefault().ActualDay;
             return actualDay;
+        }
+
+        // Aktuelle SeasonTempRange auswerten
+        public int SelectSeasonTempRange()
+        {
+            int seasonTempRangeID = database.Table<Weather>().FirstOrDefault().SeasonTempRangeID;
+            return seasonTempRangeID;
+        }
+
+        // ItemSalesQuotaID für die entsprechende SeasonTempRang und den entsprechenden Artikel zurückgeben
+        public int SelectItemSalesQuotaID(int seasonTempRangeID, int itemTypeID)
+        {
+            int itemSalesQuotaID = database.Table<ItemSalesQuota>().FirstOrDefault(item => item.SeasonTempRangeId == seasonTempRangeID && item.ItemTypeId == itemTypeID).Id;
+            return itemSalesQuotaID;
+        }
+
+        // Selektieren der beiden Verkaufsquoten
+        public void SelectItemSalesQuota (int itemSalesQuotaID, out int salesQuotaFrom, out int salesQuotaTo)
+        {
+            salesQuotaFrom = database.Table<ItemSalesQuota>().FirstOrDefault(item => item.Id == itemSalesQuotaID).SalesQuotaFrom;
+            salesQuotaTo = database.Table<ItemSalesQuota>().FirstOrDefault(item => item.Id == itemSalesQuotaID).SalesQuotaTo;
+        }
+
+        // Verkäufe 
+        public void DeleteItemsFromDB(int amount, int itemTypeID)
+        {
+            // TODO: Hier muss an die Datenbank die Anzahl und der Typ der zu löschenden Waren gemeldet werden
         }
     }
 }

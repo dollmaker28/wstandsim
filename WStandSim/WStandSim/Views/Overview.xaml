@@ -28,8 +28,8 @@
             <Label Text="Einnahmen" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
             <Label Text="Ausgaben" TextColor="White" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="End"/>
             <Label x:Name="CurrBal" Text="{Binding CurrentBalance}" TextColor="White" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Start"/>
-            <Label Text="0" TextColor="GreenYellow" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>
-            <Label Text="0" TextColor="Red" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="End"/>
+            <Label x:Name="RecYest" Text="{Binding ReceiptsYesterday}" TextColor="GreenYellow" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>
+            <Label x:Name="ExpYest" Text="{Binding ExpendituresYesterday}" TextColor="Red" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="End"/>
             <Button Clicked="Button_ClickedContinue" Text="Tag starten" Grid.Row="7" Grid.ColumnSpan="3"  BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
             <Button Text="zum Lager" Clicked="Button_ClickedStock" Grid.Row="3" Grid.Column="0" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
         </Grid>

@@ -64,6 +64,7 @@ namespace WStandSim.Database
         public int TempLow { get; set; }
         public int TempHigh { get; set; }
         public string SeasonText { get; set; }
+        public int SeasonTempRangeID { get; set; }
 
         // Parameterloser Konstruktor
         public Weather()
@@ -71,7 +72,7 @@ namespace WStandSim.Database
 
         }
         // Konstruktor
-        public Weather(int day, int seasonID, int tempFrom, int tempTo, int seasonTemperature, string weatherText, int tempLow, int tempHigh, string seasonText)
+        public Weather(int day, int seasonID, int tempFrom, int tempTo, int seasonTemperature, string weatherText, int tempLow, int tempHigh, string seasonText, int seasonTempRangeID)
         {
             this.Day = day;
             this.SeasonID = seasonID;
@@ -82,6 +83,7 @@ namespace WStandSim.Database
             this.TempLow = tempLow;
             this.TempHigh = tempHigh;
             this.SeasonText = seasonText;
+            this.SeasonTempRangeID = seasonTempRangeID;
         }
     }
 

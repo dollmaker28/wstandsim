@@ -250,169 +250,169 @@ namespace WStandSim
             itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 8; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 1;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 30; itemSalesQuota.SeasonTempRangeId = 2;
+            itemSalesQuota.Id = 2; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 30; itemSalesQuota.SeasonTempRangeId = 2;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 3;
+            itemSalesQuota.Id = 3; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 3;
             db.AddItemSalesQuota(itemSalesQuota);
             // Wurst - Sommer
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 30; itemSalesQuota.SalesQuotaTo = 40; itemSalesQuota.SeasonTempRangeId = 4;
+            itemSalesQuota.Id = 4; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 30; itemSalesQuota.SalesQuotaTo = 40; itemSalesQuota.SeasonTempRangeId = 4;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 35; itemSalesQuota.SalesQuotaTo = 60; itemSalesQuota.SeasonTempRangeId = 5;
+            itemSalesQuota.Id = 5; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 35; itemSalesQuota.SalesQuotaTo = 60; itemSalesQuota.SeasonTempRangeId = 5;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 40; itemSalesQuota.SalesQuotaTo = 75; itemSalesQuota.SeasonTempRangeId = 6;
+            itemSalesQuota.Id = 6; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 40; itemSalesQuota.SalesQuotaTo = 75; itemSalesQuota.SeasonTempRangeId = 6;
             db.AddItemSalesQuota(itemSalesQuota);
             // Wurst Herbst
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 22; itemSalesQuota.SeasonTempRangeId = 7;
+            itemSalesQuota.Id = 7; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 22; itemSalesQuota.SeasonTempRangeId = 7;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 8;
+            itemSalesQuota.Id = 8; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 8;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 9;
+            itemSalesQuota.Id = 9; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 9;
             db.AddItemSalesQuota(itemSalesQuota);
             // Wurst - Winter
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 2; itemSalesQuota.SalesQuotaTo = 10; itemSalesQuota.SeasonTempRangeId = 10;
+            itemSalesQuota.Id = 10; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 2; itemSalesQuota.SalesQuotaTo = 10; itemSalesQuota.SeasonTempRangeId = 10;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 15; itemSalesQuota.SeasonTempRangeId = 11;
+            itemSalesQuota.Id = 11; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 15; itemSalesQuota.SeasonTempRangeId = 11;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 12;
+            itemSalesQuota.Id = 12; itemSalesQuota.ItemTypeId = 1; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 12;
             db.AddItemSalesQuota(itemSalesQuota);
             #endregion
 
             #region Brot
             // Brot - Frühling
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 8; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 1;
+            itemSalesQuota.Id = 13; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 8; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 1;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 30; itemSalesQuota.SeasonTempRangeId = 2;
+            itemSalesQuota.Id = 14; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 30; itemSalesQuota.SeasonTempRangeId = 2;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 3;
+            itemSalesQuota.Id = 15; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 3;
             db.AddItemSalesQuota(itemSalesQuota);
             // Brot - Sommer
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 30; itemSalesQuota.SalesQuotaTo = 40; itemSalesQuota.SeasonTempRangeId = 4;
+            itemSalesQuota.Id = 16; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 30; itemSalesQuota.SalesQuotaTo = 40; itemSalesQuota.SeasonTempRangeId = 4;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 35; itemSalesQuota.SalesQuotaTo = 60; itemSalesQuota.SeasonTempRangeId = 5;
+            itemSalesQuota.Id = 17; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 35; itemSalesQuota.SalesQuotaTo = 60; itemSalesQuota.SeasonTempRangeId = 5;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 40; itemSalesQuota.SalesQuotaTo = 75; itemSalesQuota.SeasonTempRangeId = 6;
+            itemSalesQuota.Id = 18; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 40; itemSalesQuota.SalesQuotaTo = 75; itemSalesQuota.SeasonTempRangeId = 6;
             db.AddItemSalesQuota(itemSalesQuota);
             // Brot Herbst
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 22; itemSalesQuota.SeasonTempRangeId = 7;
+            itemSalesQuota.Id = 19; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 22; itemSalesQuota.SeasonTempRangeId = 7;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 8;
+            itemSalesQuota.Id = 20; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 8;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 9;
+            itemSalesQuota.Id = 21; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 9;
             db.AddItemSalesQuota(itemSalesQuota);
             // Brot - Winter
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 2; itemSalesQuota.SalesQuotaTo = 10; itemSalesQuota.SeasonTempRangeId = 10;
+            itemSalesQuota.Id = 22; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 2; itemSalesQuota.SalesQuotaTo = 10; itemSalesQuota.SeasonTempRangeId = 10;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 15; itemSalesQuota.SeasonTempRangeId = 11;
+            itemSalesQuota.Id = 23; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 15; itemSalesQuota.SeasonTempRangeId = 11;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 12;
+            itemSalesQuota.Id = 24; itemSalesQuota.ItemTypeId = 2; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 12;
             db.AddItemSalesQuota(itemSalesQuota);
             #endregion
 
             #region Bier
             // Bier - Frühling
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 1;
+            itemSalesQuota.Id = 25; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 1;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 2;
+            itemSalesQuota.Id = 26; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 2;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 45; itemSalesQuota.SeasonTempRangeId = 3;
+            itemSalesQuota.Id = 27; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 45; itemSalesQuota.SeasonTempRangeId = 3;
             db.AddItemSalesQuota(itemSalesQuota);
             // Bier - Sommer
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 30; itemSalesQuota.SalesQuotaTo = 50; itemSalesQuota.SeasonTempRangeId = 4;
+            itemSalesQuota.Id = 28; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 30; itemSalesQuota.SalesQuotaTo = 50; itemSalesQuota.SeasonTempRangeId = 4;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 40; itemSalesQuota.SalesQuotaTo = 60; itemSalesQuota.SeasonTempRangeId = 5;
+            itemSalesQuota.Id = 29; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 40; itemSalesQuota.SalesQuotaTo = 60; itemSalesQuota.SeasonTempRangeId = 5;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 50; itemSalesQuota.SalesQuotaTo = 85; itemSalesQuota.SeasonTempRangeId = 6;
+            itemSalesQuota.Id = 30; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 50; itemSalesQuota.SalesQuotaTo = 85; itemSalesQuota.SeasonTempRangeId = 6;
             db.AddItemSalesQuota(itemSalesQuota);
             // Bier Herbst
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 7;
+            itemSalesQuota.Id = 31; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 7;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 8;
+            itemSalesQuota.Id = 32; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 8;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 45; itemSalesQuota.SeasonTempRangeId = 9;
+            itemSalesQuota.Id = 33; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 45; itemSalesQuota.SeasonTempRangeId = 9;
             db.AddItemSalesQuota(itemSalesQuota);
             // Bier - Winter
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 1; itemSalesQuota.SalesQuotaTo = 5; itemSalesQuota.SeasonTempRangeId = 10;
+            itemSalesQuota.Id = 34; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 1; itemSalesQuota.SalesQuotaTo = 5; itemSalesQuota.SeasonTempRangeId = 10;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 10; itemSalesQuota.SeasonTempRangeId = 11;
+            itemSalesQuota.Id = 35; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 10; itemSalesQuota.SeasonTempRangeId = 11;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 15; itemSalesQuota.SeasonTempRangeId = 12;
+            itemSalesQuota.Id = 36; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 15; itemSalesQuota.SeasonTempRangeId = 12;
             db.AddItemSalesQuota(itemSalesQuota);
             #endregion
 
             #region Limonade
             // Limonade - Frühling
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 1;
+            itemSalesQuota.Id = 37; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 1;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 2;
+            itemSalesQuota.Id = 38; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 2;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 45; itemSalesQuota.SeasonTempRangeId = 3;
+            itemSalesQuota.Id = 39; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 45; itemSalesQuota.SeasonTempRangeId = 3;
             db.AddItemSalesQuota(itemSalesQuota);
             // Limonade - Sommer
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 30; itemSalesQuota.SalesQuotaTo = 50; itemSalesQuota.SeasonTempRangeId = 4;
+            itemSalesQuota.Id = 40; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 30; itemSalesQuota.SalesQuotaTo = 50; itemSalesQuota.SeasonTempRangeId = 4;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 40; itemSalesQuota.SalesQuotaTo = 60; itemSalesQuota.SeasonTempRangeId = 5;
+            itemSalesQuota.Id = 41; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 40; itemSalesQuota.SalesQuotaTo = 60; itemSalesQuota.SeasonTempRangeId = 5;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 50; itemSalesQuota.SalesQuotaTo = 85; itemSalesQuota.SeasonTempRangeId = 6;
+            itemSalesQuota.Id = 42; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 50; itemSalesQuota.SalesQuotaTo = 85; itemSalesQuota.SeasonTempRangeId = 6;
             db.AddItemSalesQuota(itemSalesQuota);
             // Limonade Herbst
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 7;
+            itemSalesQuota.Id = 43; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 25; itemSalesQuota.SeasonTempRangeId = 7;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 8;
+            itemSalesQuota.Id = 44; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 15; itemSalesQuota.SalesQuotaTo = 35; itemSalesQuota.SeasonTempRangeId = 8;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 45; itemSalesQuota.SeasonTempRangeId = 9;
+            itemSalesQuota.Id = 45; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 20; itemSalesQuota.SalesQuotaTo = 45; itemSalesQuota.SeasonTempRangeId = 9;
             db.AddItemSalesQuota(itemSalesQuota);
             // Limonade - Winter
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 1; itemSalesQuota.SalesQuotaTo = 5; itemSalesQuota.SeasonTempRangeId = 10;
+            itemSalesQuota.Id = 46; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 1; itemSalesQuota.SalesQuotaTo = 5; itemSalesQuota.SeasonTempRangeId = 10;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 10; itemSalesQuota.SeasonTempRangeId = 11;
+            itemSalesQuota.Id = 47; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 5; itemSalesQuota.SalesQuotaTo = 10; itemSalesQuota.SeasonTempRangeId = 11;
             db.AddItemSalesQuota(itemSalesQuota);
             itemSalesQuota = new ItemSalesQuota();
-            itemSalesQuota.Id = 1; itemSalesQuota.ItemTypeId = 3; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 15; itemSalesQuota.SeasonTempRangeId = 12;
+            itemSalesQuota.Id = 48; itemSalesQuota.ItemTypeId = 4; itemSalesQuota.SalesQuotaFrom = 10; itemSalesQuota.SalesQuotaTo = 15; itemSalesQuota.SeasonTempRangeId = 12;
             db.AddItemSalesQuota(itemSalesQuota);
             #endregion
 

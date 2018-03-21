@@ -185,7 +185,42 @@ namespace WStandSim.Helpers
             CurrentBalance = db.SelectCurrentBalance();
         }
 
-        // Aktueller Kontostand
+        // Verkaufen
+        public void Sell()
+        {
+            // Aufruf der Methode GetCalcQuotes für den zu verkaufenden Prozentwert
+            GetCalcQuotes(out int sausageCalcQuote, out int breadCalcQuote, out int beerCalcQuote, out int lemonadeCalcQuote);
+
+
+        }
+
+        // Berechnen der akuellen Verkaufsquoten für die jeweiligen Artikel
+        private void GetCalcQuotes(out int sausageCalcQuote, out int breadCalcQuote, out int beerCalcQuote, out int lemonadeCalcQuote)
+        {
+            // SeasonTempRangeID holen und merken
+            int seasonTempRangeID = db.SelectSeasonTempRange();
+
+            // die richtigen Datensätze für die Verkaufsquote aus der DB holen für alle Produkte
+            int sausageSalesQuotaID = db.SelectItemSalesQuotaID(seasonTempRangeID, 1);
+            int breadSalesQuotaID = db.SelectItemSalesQuotaID(seasonTempRangeID, 2);
+            int beerSalesQuotaID = db.SelectItemSalesQuotaID(seasonTempRangeID, 3);
+            int lemonadeSalesQuotaID = db.SelectItemSalesQuotaID(seasonTempRangeID, 4);
+
+            // Die Quoten für die jeweiligen Produkte aus der DB holen
+            db.SelectItemSalesQuota(sausageSalesQuotaID, out int sausageSalesQuotaFrom, out int sausageSalesQuotaTo);
+            db.SelectItemSalesQuota(breadSalesQuotaID, out int breadSalesQuotaFrom, out int breadSalesQuotaTo);
+            db.SelectItemSalesQuota(beerSalesQuotaID, out int beerSalesQuotaFrom, out int beerSalesQuotaTo);
+            db.SelectItemSalesQuota(lemonadeSalesQuotaID, out int lemonadeSalesQuotaFrom, out int lemonadeSalesQuotaTo);
+
+            // Randoms im jeweiligen Bereich berechnen
+            Random rnd = new Random();
+            sausageCalcQuote = rnd.Next(sausageSalesQuotaFrom, sausageSalesQuotaTo);
+            breadCalcQuote = rnd.Next(breadSalesQuotaFrom, breadSalesQuotaTo);
+            beerCalcQuote = rnd.Next(beerSalesQuotaFrom, beerSalesQuotaTo);
+            lemonadeCalcQuote = rnd.Next(lemonadeSalesQuotaFrom, lemonadeSalesQuotaTo);
+        }
+
+        // Aktueller Kontostand => wird nach jedem Einkauf sowie nach der Simulation berechnet anhand der aktuellen Einnahmen
         private double currentBalance;
         // Property für aktuellen Kontostand
         public double CurrentBalance
@@ -193,5 +228,25 @@ namespace WStandSim.Helpers
             get { currentBalance = db.SelectCurrentBalance();  return this.currentBalance; } 
             set { if (this.currentBalance != value) { this.currentBalance = value; ; this.NotifyPropertyChanged("CurrentBalance"); } }
         }
+
+        // Aktuelle Einnahmen => werden nach der Simulation berechnet anhand der verkauften Artikel
+        private double receiptsYesterday;
+        // Property für Einnahmen
+        public double ReceiptsYesterday
+        {
+            get { receiptsYesterday = db.SelectReceiptsYesterday(); return this.receiptsYesterday; }
+            set { if (this.receiptsYesterday != value) { this.receiptsYesterday = value; ; this.NotifyPropertyChanged("ReceiptsYesterday"); } }
+        }
+
+        // Aktuelle Ausgaben => werden nach der Simulation berechnet anhand der Einkäufe und der abgelaufenen Waren
+        private double expendituresYesterday;
+        // Property für Ausgaben
+        public double ExpendituresYesterday
+        {
+            get { expendituresYesterday = db.SelectExpendituresYesterday(); return this.expendituresYesterday; }
+            set { if (this.expendituresYesterday != value) { this.expendituresYesterday = value; ; this.NotifyPropertyChanged("ExpendituresYesterday"); } }
+        }
+
+
     }
 }

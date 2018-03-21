@@ -71,6 +71,9 @@ namespace WStandSim
             base.OnAppearing();
 
             CurrBal.Text = s.CurrentBalance.ToString();
+            RecYest.Text = s.ReceiptsYesterday.ToString();
+            ExpYest.Text = s.ExpendituresYesterday.ToString();
         }
     }
+
 }
