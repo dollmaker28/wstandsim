@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WStandSim.Helpers;
@@ -330,8 +331,12 @@ namespace WStandSim.Database
         {
             if(amount > 0)
             {
-            // Löschen der jeweiligen Anzahl des jeweiligen Artikels
-            //database.Execute("DELETE FROM StoredItems where ItemTypeID = ? ORDER BY Bestbefore DESC LIMIT ?", itemTypeID, amount);
+                // Löschen der jeweiligen Anzahl des jeweiligen Artikels
+                var listToRemove = (from a in database.Table<StoredItems>() where a.ItemTypeId.Equals(itemTypeID) orderby a.Bestbefore descending select a).Take(amount).ToList();
+                foreach (var item in listToRemove)
+                {
+                    database.Delete(item);
+                }
 
             // Aufruf der Methode für die Verkaufspreise
             // Wurst

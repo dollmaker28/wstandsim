@@ -35,15 +35,11 @@ namespace WStandSim
             // Artikel verkaufen und den Kontostand aktualisieren
             s.Sell();
 
-            // Instanzierung der Klasse Simulation
-            //Simulation s = new Simulation();
-
-            // und Wetter für den kommenden Tag neu berechnen.
-            // BindingContext
-            //BindingContext = s;
             // Tag und ev. Jahreszeit um 1 nach vorne setzen
             s.SimulateNewDayAndSeason(); 
             s.CalculateNewWeather();
+
+            CurrBal.Text = s.CurrentBalance.ToString();
         }
 
 
