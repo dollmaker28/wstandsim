@@ -13,6 +13,7 @@ namespace WStandSim
 		public MainPage()
 		{
 			InitializeComponent();
+            this.ApplyBindings();
 		}
 
         // Button "Neues Spiel"

@@ -64,5 +64,13 @@ namespace WStandSim
             else
                 await Navigation.PushModalAsync(stock);
         }
+
+        // Methode zur Übernahme des Geänderten Guthabens
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            CurrBal.Text = s.CurrentBalance.ToString();
+        }
     }
 }
