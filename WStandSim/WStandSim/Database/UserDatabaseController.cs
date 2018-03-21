@@ -36,7 +36,7 @@ namespace WStandSim.Database
             database.DropTable<GameSaved>();
             database.DropTable<SeasonDays>();
             database.DropTable<DayCount>();
-            database.DropTable <ItemPrice>();
+            database.DropTable <ItemProperties>();
         }
 
         // Erstellen der Tabellen
@@ -52,7 +52,7 @@ namespace WStandSim.Database
             database.CreateTable<GameSaved>();
             database.CreateTable<SeasonDays>();
             database.CreateTable<DayCount>();
-            database.CreateTable<ItemPrice>();
+            database.CreateTable<ItemProperties>();
         }
 
         // Finanzen einfügen
@@ -84,7 +84,7 @@ namespace WStandSim.Database
         }
 
         // Ein - und Verkaufspreise für die Artikel einfügen
-        public void AddItemPrice(ItemPrice itemprice)
+        public void AddItemPrice(ItemProperties itemprice)
         {
             database.Insert(itemprice);
             database.Commit();
@@ -222,41 +222,37 @@ namespace WStandSim.Database
         }
 
         //Artikel speichern => Einkauf
-        public void SaveItemsToDB(int itemAmount, int actualDay, double price, int itemTypeID)
+        public void SaveItemsToDB(int itemAmount, double price, int itemTypeID, int daysToExpire)
         {
             // Würste einfügen
-            actualDay += 10; // Hält x Tage
             if(itemTypeID == 1)
             for (int i = 0; i < itemAmount; i++)
             {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", actualDay, itemTypeID);
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
                 database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
             }
 
             // Brot einfügen
-            actualDay += 5; // Hält x Tage
             if (itemTypeID == 2)
                 for (int i = 0; i < itemAmount; i++)
                 {
-                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", actualDay, itemTypeID);
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
                     database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
                 }
 
             // Bier einfügen
-            actualDay += 15; // Hält x Tage
             if (itemTypeID == 3)
                 for (int i = 0; i < itemAmount; i++)
                 {
-                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", actualDay, itemTypeID);
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
                     database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
                 }
 
             // Limonade einfügen
-            actualDay += 15; // Hält x Tage
             if (itemTypeID == 4)
                 for (int i = 0; i < itemAmount; i++)
                 {
-                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", actualDay, itemTypeID);
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
                     database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
                 }
         }
@@ -320,13 +316,14 @@ namespace WStandSim.Database
         }
 
         // Ein - und Verkaufspreis eines bestimmten Artikels abrufen
-        public void SelectItemPrices(int itemTypeID, out double purchasingPrice, out double retailPrice)
+        public void SelectItemPrices(int itemTypeID, out double purchasingPrice, out double retailPrice, out int daysToExpire)
         {
-            purchasingPrice = database.Table<ItemPrice>().FirstOrDefault(item => item.Id == itemTypeID).PurchasingPrice;
-            retailPrice = database.Table<ItemPrice>().FirstOrDefault(item => item.Id == itemTypeID).RetailPrice;
+            purchasingPrice = database.Table<ItemProperties>().FirstOrDefault(item => item.Id == itemTypeID).PurchasingPrice;
+            retailPrice = database.Table<ItemProperties>().FirstOrDefault(item => item.Id == itemTypeID).RetailPrice;
+            daysToExpire = database.Table<ItemProperties>().FirstOrDefault(item => item.Id == itemTypeID).DaysToExpire;
         }
 
-        // Verkäufe aus der DB löschen und Betrag zum Kontostand hinzufügen
+        // Verkäufe aus der DB löschen und Betrag zum Kontostand hinzufügen => Verkauf
         public void DeleteItemsFromDBAndAddToBalance(int amount, int itemTypeID)
         {
             if(amount > 0)
@@ -339,14 +336,15 @@ namespace WStandSim.Database
                 }
 
             // Aufruf der Methode für die Verkaufspreise
-            // Wurst
-            SelectItemPrices(itemTypeID, out double purchasingPrice, out double retailPrice);
+            SelectItemPrices(itemTypeID, out double purchasingPrice, out double retailPrice, out int daysToExpire);
 
             // Selektieren des aktuellen Kontostandes
             double currBal = SelectCurrentBalance();
 
             // Verkäufe des übergebenen Items zum Kontostand zählen
             double newCurrentBalance = (amount * retailPrice) + currBal;
+
+            // Verkäufe zu den Einnahmen zählen und überschreiben
 
             // und in der Datenbank überschreiben
             database.Execute("UPDATE Finance SET Amount = ? where AssetLabel = 'currentBalance'", newCurrentBalance);

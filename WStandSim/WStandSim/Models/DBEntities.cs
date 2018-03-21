@@ -152,13 +152,14 @@ namespace WStandSim.Database
         }
     }
 
-    [Table("ItemPrice")]
+    [Table("ItemProperties")]
     // Klasse für die Ein - und Verkaufspreise der Produkte
-    public class ItemPrice
+    public class ItemProperties
     {
         public int Id { get; set; }
         public int ItemTypeID { get; set; }
         public double PurchasingPrice { get; set; }
         public double RetailPrice { get; set; }
+        public int DaysToExpire { get; set; }
     }
 }

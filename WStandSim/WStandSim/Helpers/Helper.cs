@@ -447,41 +447,45 @@ namespace WStandSim
             #endregion
 
             // Preise für Artikel einfügen
-            #region ItemPrice
+            #region ItemProperties
             // Wurstpreise
-            ItemPrice itemprice = new ItemPrice
+            ItemProperties itemprice = new ItemProperties
             {
                 Id = 1,
                 ItemTypeID = 1,
                 PurchasingPrice = 1.75,
-                RetailPrice = 2.25
+                RetailPrice = 2.25,
+                DaysToExpire = 15
             };
             db.AddItemPrice(itemprice);
             // Brotpreise
-            itemprice = new ItemPrice
+            itemprice = new ItemProperties
             {
                 Id = 2,
                 ItemTypeID = 2,
                 PurchasingPrice = 0.70,
-                RetailPrice = 0.90
+                RetailPrice = 0.90,
+                DaysToExpire = 5
             };
             db.AddItemPrice(itemprice);
             // Bierpreise
-            itemprice = new ItemPrice
+            itemprice = new ItemProperties
             {
                 Id = 3,
                 ItemTypeID = 3,
                 PurchasingPrice = 0.90,
-                RetailPrice = 1.50
+                RetailPrice = 1.50,
+                DaysToExpire = 25
             };
             db.AddItemPrice(itemprice);
             // Limonadenpreise
-            itemprice = new ItemPrice
+            itemprice = new ItemProperties
             {
                 Id = 4,
                 ItemTypeID = 4,
                 PurchasingPrice = 0.50,
-                RetailPrice = 1.15
+                RetailPrice = 1.15,
+                DaysToExpire = 25
             };
             db.AddItemPrice(itemprice);
             #endregion

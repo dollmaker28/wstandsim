@@ -8,7 +8,7 @@ namespace WStandSim.Helpers
 {
     // Klasse für die Simulation des gesamten Tages
     class Simulation : DBBase
-    {   
+    {
         // Instanzierung des DB-Controllers
         UserDatabaseController db = new UserDatabaseController();
 
@@ -152,33 +152,53 @@ namespace WStandSim.Helpers
         //Kaufen
         public void Buy()
         {
-            // aktuellen Tag holen für Ablaufdatum
+            // aktuellen Tag holen für Berechnung des engültigen Ablauftages eines Artikel
             int actualDay = db.SelectActualDay();
 
             // Artikel speichern und zurücksetzen
             // Wurst
-            if(Sausages > 0)
+            if (Sausages > 0)
             {
-            db.SaveItemsToDB(Sausages, actualDay, 3.70, 1);
-            Sausages = 0;
+                // Tage bis zum Ablauf des Produkts aus der DB holen
+                db.SelectItemPrices(1, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                int expiryDay = actualDay + daysToExpire;
+
+                // Werte an Methode übergeben
+                db.SaveItemsToDB(Sausages, purchasingPrice, 1, daysToExpire);
+                Sausages = 0;
             }
             // Brot
-            if(Bread > 0)
+            if (Bread > 0)
             {
-            db.SaveItemsToDB(Bread, actualDay, 0.50, 2);
-            Bread = 0;
+                // Tage bis zum Ablauf des Produkts aus der DB holen
+                db.SelectItemPrices(1, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                int expiryDay = actualDay + daysToExpire;
+
+                // Werte an Methode übergeben
+                db.SaveItemsToDB(Bread, purchasingPrice, 2, daysToExpire);
+                Bread = 0;
             }
             // Bier
-            if(Beer > 0)
+            if (Beer > 0)
             {
-            db.SaveItemsToDB(Beer, actualDay, 2.50, 3);
-            Beer = 0;
+                // Tage bis zum Ablauf des Produkts aus der DB holen
+                db.SelectItemPrices(1, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                int expiryDay = actualDay + daysToExpire;
+
+                // Werte an Methode übergeben
+                db.SaveItemsToDB(Beer, purchasingPrice, 3, daysToExpire);
+                Beer = 0;
             }
             // Limonade
-            if(Lemonades > 0)
+            if (Lemonades > 0)
             {
-            db.SaveItemsToDB(Lemonades, actualDay, 1.20, 4);
-            Lemonades = 0;
+                // Tage bis zum Ablauf des Produkts aus der DB holen
+                db.SelectItemPrices(1, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                int expiryDay = actualDay + daysToExpire;
+
+                // Werte an Methode übergeben
+                db.SaveItemsToDB(Lemonades, purchasingPrice, 4, daysToExpire);
+                Lemonades = 0;
             }
 
             // Currentbalance aktualisieren
@@ -247,7 +267,7 @@ namespace WStandSim.Helpers
         // Property für aktuellen Kontostand
         public double CurrentBalance
         {
-            get { currentBalance = db.SelectCurrentBalance();  return this.currentBalance; } 
+            get { currentBalance = db.SelectCurrentBalance(); return this.currentBalance; }
             set { if (this.currentBalance != value) { this.currentBalance = value; ; this.NotifyPropertyChanged("CurrentBalance"); } }
         }
 
