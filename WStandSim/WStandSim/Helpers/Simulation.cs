@@ -191,7 +191,29 @@ namespace WStandSim.Helpers
             // Aufruf der Methode GetCalcQuotes für den zu verkaufenden Prozentwert
             GetCalcQuotes(out int sausageCalcQuote, out int breadCalcQuote, out int beerCalcQuote, out int lemonadeCalcQuote);
 
+            // Selektieren der gespeicherten Artikel pro Typ
+            db.SelectAmountPerItem(out int sausagesNumber, out int breadNumber, out int beerNumber, out int lemonadesNumber);
 
+            // Anzahl der zu verkaufenden / zu löschenden Artikel errechnen
+            // Wurst
+            int soldSausages = sausageCalcQuote * sausagesNumber / 100;
+            // Brot
+            int soldBread = breadCalcQuote * breadNumber / 100;
+            // Bier
+            int soldBeer = beerCalcQuote * beerNumber / 100;
+            // Limonade
+            int soldLemonades = lemonadeCalcQuote * lemonadesNumber / 100;
+
+            // Würste löschen/verkaufen und zum Kontostand hinzufügen
+            db.DeleteItemsFromDBAndAddToBalance(soldSausages, 1);
+            // Brote löschen/verkaufen und zum Kontostand hinzufügen
+            db.DeleteItemsFromDBAndAddToBalance(soldBread, 2);
+            // Bier löschen/verkaufen und zum Kontostand hinzufügen
+            db.DeleteItemsFromDBAndAddToBalance(soldBeer, 3);
+            // Limonade löschen/verkaufen und zum Kontostand hinzufügen
+            db.DeleteItemsFromDBAndAddToBalance(soldLemonades, 4);
+
+            CurrentBalance = db.SelectCurrentBalance();
         }
 
         // Berechnen der akuellen Verkaufsquoten für die jeweiligen Artikel
@@ -246,7 +268,6 @@ namespace WStandSim.Helpers
             get { expendituresYesterday = db.SelectExpendituresYesterday(); return this.expendituresYesterday; }
             set { if (this.expendituresYesterday != value) { this.expendituresYesterday = value; ; this.NotifyPropertyChanged("ExpendituresYesterday"); } }
         }
-
 
     }
 }

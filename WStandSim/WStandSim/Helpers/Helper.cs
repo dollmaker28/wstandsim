@@ -442,8 +442,48 @@ namespace WStandSim
                 ActualDay = 1
             };
             db.SaveDay(dayCount);
-            
 
+
+            #endregion
+
+            // Preise für Artikel einfügen
+            #region ItemPrice
+            // Wurstpreise
+            ItemPrice itemprice = new ItemPrice
+            {
+                Id = 1,
+                ItemTypeID = 1,
+                PurchasingPrice = 1.75,
+                RetailPrice = 2.25
+            };
+            db.AddItemPrice(itemprice);
+            // Brotpreise
+            itemprice = new ItemPrice
+            {
+                Id = 2,
+                ItemTypeID = 2,
+                PurchasingPrice = 0.70,
+                RetailPrice = 0.90
+            };
+            db.AddItemPrice(itemprice);
+            // Bierpreise
+            itemprice = new ItemPrice
+            {
+                Id = 3,
+                ItemTypeID = 3,
+                PurchasingPrice = 0.90,
+                RetailPrice = 1.50
+            };
+            db.AddItemPrice(itemprice);
+            // Limonadenpreise
+            itemprice = new ItemPrice
+            {
+                Id = 4,
+                ItemTypeID = 4,
+                PurchasingPrice = 0.50,
+                RetailPrice = 1.15
+            };
+            db.AddItemPrice(itemprice);
             #endregion
 
             // Wetter initial berechnen

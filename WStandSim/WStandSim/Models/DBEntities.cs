@@ -151,4 +151,14 @@ namespace WStandSim.Database
             this.ActualDay = actualDay;
         }
     }
+
+    [Table("ItemPrice")]
+    // Klasse für die Ein - und Verkaufspreise der Produkte
+    public class ItemPrice
+    {
+        public int Id { get; set; }
+        public int ItemTypeID { get; set; }
+        public double PurchasingPrice { get; set; }
+        public double RetailPrice { get; set; }
+    }
 }

@@ -35,6 +35,7 @@ namespace WStandSim.Database
             database.DropTable<GameSaved>();
             database.DropTable<SeasonDays>();
             database.DropTable<DayCount>();
+            database.DropTable <ItemPrice>();
         }
 
         // Erstellen der Tabellen
@@ -50,6 +51,7 @@ namespace WStandSim.Database
             database.CreateTable<GameSaved>();
             database.CreateTable<SeasonDays>();
             database.CreateTable<DayCount>();
+            database.CreateTable<ItemPrice>();
         }
 
         // Finanzen einfügen
@@ -77,6 +79,13 @@ namespace WStandSim.Database
         public void AddItemType(ItemType itemType)
         {
             database.Insert(itemType);
+            database.Commit();
+        }
+
+        // Ein - und Verkaufspreise für die Artikel einfügen
+        public void AddItemPrice(ItemPrice itemprice)
+        {
+            database.Insert(itemprice);
             database.Commit();
         }
 
@@ -300,10 +309,43 @@ namespace WStandSim.Database
             salesQuotaTo = database.Table<ItemSalesQuota>().FirstOrDefault(item => item.Id == itemSalesQuotaID).SalesQuotaTo;
         }
 
-        // Verkäufe 
-        public void DeleteItemsFromDB(int amount, int itemTypeID)
+        // Selektieren der Anzahl der jeweiligen Artikel
+        public void SelectAmountPerItem (out int sausagesNumber, out int breadNumber, out int beerNumber, out int lemonadesNumber)
         {
-            // TODO: Hier muss an die Datenbank die Anzahl und der Typ der zu löschenden Waren gemeldet werden
+            sausagesNumber = database.Table<StoredItems>().Count(item => item.ItemTypeId == 1);
+            breadNumber = database.Table<StoredItems>().Count(item => item.ItemTypeId == 2);
+            beerNumber = database.Table<StoredItems>().Count(item => item.ItemTypeId == 3);
+            lemonadesNumber = database.Table<StoredItems>().Count(item => item.ItemTypeId == 4);
+        }
+
+        // Ein - und Verkaufspreis eines bestimmten Artikels abrufen
+        public void SelectItemPrices(int itemTypeID, out double purchasingPrice, out double retailPrice)
+        {
+            purchasingPrice = database.Table<ItemPrice>().FirstOrDefault(item => item.Id == itemTypeID).PurchasingPrice;
+            retailPrice = database.Table<ItemPrice>().FirstOrDefault(item => item.Id == itemTypeID).RetailPrice;
+        }
+
+        // Verkäufe aus der DB löschen und Betrag zum Kontostand hinzufügen
+        public void DeleteItemsFromDBAndAddToBalance(int amount, int itemTypeID)
+        {
+            if(amount > 0)
+            {
+            // Löschen der jeweiligen Anzahl des jeweiligen Artikels
+            //database.Execute("DELETE FROM StoredItems where ItemTypeID = ? ORDER BY Bestbefore DESC LIMIT ?", itemTypeID, amount);
+
+            // Aufruf der Methode für die Verkaufspreise
+            // Wurst
+            SelectItemPrices(itemTypeID, out double purchasingPrice, out double retailPrice);
+
+            // Selektieren des aktuellen Kontostandes
+            double currBal = SelectCurrentBalance();
+
+            // Verkäufe des übergebenen Items zum Kontostand zählen
+            double newCurrentBalance = (amount * retailPrice) + currBal;
+
+            // und in der Datenbank überschreiben
+            database.Execute("UPDATE Finance SET Amount = ? where AssetLabel = 'currentBalance'", newCurrentBalance);
+            }
         }
     }
 }
