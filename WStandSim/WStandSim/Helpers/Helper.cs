@@ -1,26 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WStandSim.Database;
-using WStandSim.Models;
+﻿using WStandSim.Database;
 
 namespace WStandSim
 {
     public class Helper
     {
-        // Wenn ein neues Spiel gestartet wird, soll die Db angelegt werden,
+        // Wenn ein neues Spiel gestartet wird, soll die DB angelegt werden,
         // die Tabellen befüllt werden und der Startbetrag auf 500 gesetzt werden.
-
-        // TODO:
-        // Weiter soll die Berechnung des Wetters durchgeführt werden.
         public void Initializer()
         {
             // Instanzieren der Datenbank-Klasse
             UserDatabaseController db = new UserDatabaseController();
             db.DropTables();
             db.CreateTables();
-
-            // TODO: Tabellen mit Default-Werten befüllen
 
             // Jahreszeiten einfügen. Ruft Methode in UserDatabaseController auf und übergibt das Objekt
             #region Seasons

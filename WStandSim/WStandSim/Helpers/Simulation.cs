@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WStandSim.Database;
-using System.ComponentModel;
 
 namespace WStandSim.Helpers
 {
@@ -152,6 +149,10 @@ namespace WStandSim.Helpers
         //Kaufen
         public void Buy()
         {
+            // WICHTIG!!! Hier ist der erste Punkt nach dem Kauf, zu dem die RICHTIGE ID der Artikels benötigt wird.
+            // Hier muss unbedingt die richtige ID rein und mit der ID des Artikels in der Tabelle ItemType übereinstimmen!!!
+            int sausageID = 1, breadID = 2, beerID = 3, lemonadeID = 4;
+
             // aktuellen Tag holen für Berechnung des engültigen Ablauftages eines Artikel
             int actualDay = db.SelectActualDay();
 
@@ -160,44 +161,44 @@ namespace WStandSim.Helpers
             if (Sausages > 0)
             {
                 // Tage bis zum Ablauf des Produkts aus der DB holen
-                db.SelectItemPrices(1, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                db.SelectItemPrices(sausageID, out double purchasingPrice, out double retailPrice, out int daysToExpire);
                 int expiryDay = actualDay + daysToExpire;
 
                 // Werte an Methode übergeben
-                db.SaveItemsToDB(Sausages, purchasingPrice, 1, daysToExpire);
+                db.SaveItemsToDB(Sausages, purchasingPrice, sausageID, daysToExpire);
                 Sausages = 0;
             }
             // Brot
             if (Bread > 0)
             {
                 // Tage bis zum Ablauf des Produkts aus der DB holen
-                db.SelectItemPrices(2, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                db.SelectItemPrices(breadID, out double purchasingPrice, out double retailPrice, out int daysToExpire);
                 int expiryDay = actualDay + daysToExpire;
 
                 // Werte an Methode übergeben
-                db.SaveItemsToDB(Bread, purchasingPrice, 2, daysToExpire);
+                db.SaveItemsToDB(Bread, purchasingPrice, breadID, daysToExpire);
                 Bread = 0;
             }
             // Bier
             if (Beer > 0)
             {
                 // Tage bis zum Ablauf des Produkts aus der DB holen
-                db.SelectItemPrices(3, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                db.SelectItemPrices(beerID, out double purchasingPrice, out double retailPrice, out int daysToExpire);
                 int expiryDay = actualDay + daysToExpire;
 
                 // Werte an Methode übergeben
-                db.SaveItemsToDB(Beer, purchasingPrice, 3, daysToExpire);
+                db.SaveItemsToDB(Beer, purchasingPrice, beerID, daysToExpire);
                 Beer = 0;
             }
             // Limonade
             if (Lemonades > 0)
             {
                 // Tage bis zum Ablauf des Produkts aus der DB holen
-                db.SelectItemPrices(4, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                db.SelectItemPrices(lemonadeID, out double purchasingPrice, out double retailPrice, out int daysToExpire);
                 int expiryDay = actualDay + daysToExpire;
 
                 // Werte an Methode übergeben
-                db.SaveItemsToDB(Lemonades, purchasingPrice, 4, daysToExpire);
+                db.SaveItemsToDB(Lemonades, purchasingPrice, lemonadeID, daysToExpire);
                 Lemonades = 0;
             }
 

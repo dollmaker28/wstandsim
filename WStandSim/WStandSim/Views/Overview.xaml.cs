@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WStandSim.Database;
 using WStandSim.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,30 +15,24 @@ namespace WStandSim
         {
             InitializeComponent();
             s = new Simulation();
-            //u = new UserDatabaseController();
             s.ReturnWeather.ToString();
             BindingContext = s;
             stock = new Stock();
-            //u.SelectCurrentBalance();
         }
 
-
-        
-
+        // Tag starten
         private void Button_ClickedContinue(object sender, EventArgs e)
         {
             // Artikel verkaufen und den Kontostand aktualisieren
             s.Sell();
-
-            // Tag und ev. Jahreszeit um 1 nach vorne setzen
             s.SimulateNewDayAndSeason(); 
             s.CalculateNewWeather();
 
-            CurrBal.Text = s.CurrentBalance.ToString();
-            RecYest.Text = s.ReceiptsYesterday.ToString();
+            // Felder manuell aktualisieren
+            OnAppearing();
         }
 
-
+        // Navigation zum Lager
         async private void Button_ClickedStock(object sender, EventArgs e)
         {
             if (stock == null)
