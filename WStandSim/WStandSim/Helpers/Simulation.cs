@@ -171,7 +171,7 @@ namespace WStandSim.Helpers
             if (Bread > 0)
             {
                 // Tage bis zum Ablauf des Produkts aus der DB holen
-                db.SelectItemPrices(1, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                db.SelectItemPrices(2, out double purchasingPrice, out double retailPrice, out int daysToExpire);
                 int expiryDay = actualDay + daysToExpire;
 
                 // Werte an Methode übergeben
@@ -182,7 +182,7 @@ namespace WStandSim.Helpers
             if (Beer > 0)
             {
                 // Tage bis zum Ablauf des Produkts aus der DB holen
-                db.SelectItemPrices(1, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                db.SelectItemPrices(3, out double purchasingPrice, out double retailPrice, out int daysToExpire);
                 int expiryDay = actualDay + daysToExpire;
 
                 // Werte an Methode übergeben
@@ -193,7 +193,7 @@ namespace WStandSim.Helpers
             if (Lemonades > 0)
             {
                 // Tage bis zum Ablauf des Produkts aus der DB holen
-                db.SelectItemPrices(1, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                db.SelectItemPrices(4, out double purchasingPrice, out double retailPrice, out int daysToExpire);
                 int expiryDay = actualDay + daysToExpire;
 
                 // Werte an Methode übergeben
@@ -203,6 +203,8 @@ namespace WStandSim.Helpers
 
             // Currentbalance aktualisieren
             CurrentBalance = db.SelectCurrentBalance();
+            // Einnahmen gestern aktualisieren
+            ReceiptsYesterday = db.SelectReceiptsYesterday();
         }
 
         // Verkaufen
@@ -217,23 +219,26 @@ namespace WStandSim.Helpers
             // Anzahl der zu verkaufenden / zu löschenden Artikel errechnen
             // Wurst
             int soldSausages = sausageCalcQuote * sausagesNumber / 100;
+            if (soldSausages < 1 && sausagesNumber > 0) { soldSausages = 1; } else if (soldSausages >= 1) { soldSausages = sausageCalcQuote * sausagesNumber / 100; };
             // Brot
             int soldBread = breadCalcQuote * breadNumber / 100;
+            if (soldBread < 1 && breadNumber > 0) { soldBread = 1; } else if (soldBread >= 1) { soldBread = breadCalcQuote * breadNumber / 100; };
             // Bier
             int soldBeer = beerCalcQuote * beerNumber / 100;
+            if (soldBeer < 1 && beerNumber > 0) { soldBeer = 1; } else if (soldBeer >= 1) { soldBeer = beerCalcQuote * beerNumber / 100; };
             // Limonade
             int soldLemonades = lemonadeCalcQuote * lemonadesNumber / 100;
+            if (soldLemonades < 1 && lemonadesNumber > 0) { soldLemonades = 1; } else if (soldLemonades >= 1) { soldLemonades = lemonadeCalcQuote * lemonadesNumber / 100; };
 
             // Würste löschen/verkaufen und zum Kontostand hinzufügen
-            db.DeleteItemsFromDBAndAddToBalance(soldSausages, 1);
+            if(sausagesNumber > 0) { db.DeleteItemsFromDBAndAddToBalance(soldSausages, 1); CurrentBalance = db.SelectCurrentBalance(); }
             // Brote löschen/verkaufen und zum Kontostand hinzufügen
-            db.DeleteItemsFromDBAndAddToBalance(soldBread, 2);
+            if(breadNumber > 0) { db.DeleteItemsFromDBAndAddToBalance(soldBread, 2); CurrentBalance = db.SelectCurrentBalance(); }
             // Bier löschen/verkaufen und zum Kontostand hinzufügen
-            db.DeleteItemsFromDBAndAddToBalance(soldBeer, 3);
+            if(beerNumber > 0) { db.DeleteItemsFromDBAndAddToBalance(soldBeer, 3); CurrentBalance = db.SelectCurrentBalance(); }
             // Limonade löschen/verkaufen und zum Kontostand hinzufügen
-            db.DeleteItemsFromDBAndAddToBalance(soldLemonades, 4);
+            if(lemonadesNumber > 0) { db.DeleteItemsFromDBAndAddToBalance(soldLemonades, 4); CurrentBalance = db.SelectCurrentBalance(); }
 
-            CurrentBalance = db.SelectCurrentBalance();
         }
 
         // Berechnen der akuellen Verkaufsquoten für die jeweiligen Artikel

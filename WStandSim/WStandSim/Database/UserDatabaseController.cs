@@ -16,7 +16,7 @@ namespace WStandSim.Database
 
         SQLiteConnection database;
 
-        
+
 
         // DB-Verbindung aufbauen
         public UserDatabaseController()
@@ -36,7 +36,7 @@ namespace WStandSim.Database
             database.DropTable<GameSaved>();
             database.DropTable<SeasonDays>();
             database.DropTable<DayCount>();
-            database.DropTable <ItemProperties>();
+            database.DropTable<ItemProperties>();
         }
 
         // Erstellen der Tabellen
@@ -141,7 +141,7 @@ namespace WStandSim.Database
             Weather newWeather = new Weather(day, seasonID, tempFrom, tempTo, seasonTemperature, weatherText, tempLow, tempHigh, seasonText, seasonTempRangeID);
             // und abspeichern
             AddWeather(newWeather);
-         }
+        }
 
         // Wettervorhersage aus Tabelle Weather
         public string WeatherForecast()
@@ -225,12 +225,12 @@ namespace WStandSim.Database
         public void SaveItemsToDB(int itemAmount, double price, int itemTypeID, int daysToExpire)
         {
             // Würste einfügen
-            if(itemTypeID == 1)
-            for (int i = 0; i < itemAmount; i++)
-            {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-            }
+            if (itemTypeID == 1)
+                for (int i = 0; i < itemAmount; i++)
+                {
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                }
 
             // Brot einfügen
             if (itemTypeID == 2)
@@ -300,14 +300,14 @@ namespace WStandSim.Database
         }
 
         // Selektieren der beiden Verkaufsquoten
-        public void SelectItemSalesQuota (int itemSalesQuotaID, out int salesQuotaFrom, out int salesQuotaTo)
+        public void SelectItemSalesQuota(int itemSalesQuotaID, out int salesQuotaFrom, out int salesQuotaTo)
         {
             salesQuotaFrom = database.Table<ItemSalesQuota>().FirstOrDefault(item => item.Id == itemSalesQuotaID).SalesQuotaFrom;
             salesQuotaTo = database.Table<ItemSalesQuota>().FirstOrDefault(item => item.Id == itemSalesQuotaID).SalesQuotaTo;
         }
 
         // Selektieren der Anzahl der jeweiligen Artikel
-        public void SelectAmountPerItem (out int sausagesNumber, out int breadNumber, out int beerNumber, out int lemonadesNumber)
+        public void SelectAmountPerItem(out int sausagesNumber, out int breadNumber, out int beerNumber, out int lemonadesNumber)
         {
             sausagesNumber = database.Table<StoredItems>().Count(item => item.ItemTypeId == 1);
             breadNumber = database.Table<StoredItems>().Count(item => item.ItemTypeId == 2);
@@ -326,7 +326,7 @@ namespace WStandSim.Database
         // Verkäufe aus der DB löschen und Betrag zum Kontostand hinzufügen => Verkauf
         public void DeleteItemsFromDBAndAddToBalance(int amount, int itemTypeID)
         {
-            if(amount > 0)
+            if (amount > 0)
             {
                 // Löschen der jeweiligen Anzahl des jeweiligen Artikels
                 var listToRemove = (from a in database.Table<StoredItems>() where a.ItemTypeId.Equals(itemTypeID) orderby a.Bestbefore descending select a).Take(amount).ToList();
@@ -335,19 +335,26 @@ namespace WStandSim.Database
                     database.Delete(item);
                 }
 
-            // Aufruf der Methode für die Verkaufspreise
-            SelectItemPrices(itemTypeID, out double purchasingPrice, out double retailPrice, out int daysToExpire);
+                // Aufruf der Methode für die Verkaufspreise
+                SelectItemPrices(itemTypeID, out double purchasingPrice, out double retailPrice, out int daysToExpire);
 
-            // Selektieren des aktuellen Kontostandes
-            double currBal = SelectCurrentBalance();
+                // Selektieren des aktuellen Kontostandes
+                double currBal = SelectCurrentBalance();
 
-            // Verkäufe des übergebenen Items zum Kontostand zählen
-            double newCurrentBalance = (amount * retailPrice) + currBal;
+                // Verkäufe des übergebenen Items zum Kontostand zählen
+                double newCurrentBalance = (amount * retailPrice) + currBal;
 
-            // Verkäufe zu den Einnahmen zählen und überschreiben
+                // und in der Datenbank überschreiben
+                database.Execute("UPDATE Finance SET Amount = ? where AssetLabel = 'currentBalance'", newCurrentBalance);
 
-            // und in der Datenbank überschreiben
-            database.Execute("UPDATE Finance SET Amount = ? where AssetLabel = 'currentBalance'", newCurrentBalance);
+                // Selektieren der aktuellen Einnahmen gestern
+                double recYest = SelectReceiptsYesterday();
+
+                // Verkäufe als "Einnahmen gestern" in Variable speichern
+                double receiptsYesterday = (amount * retailPrice) + recYest;
+
+                // und überschreiben
+                database.Execute("UPDATE Finance SET Amount = ? where AssetLabel = 'receiptsYesterday'", receiptsYesterday);
             }
         }
     }

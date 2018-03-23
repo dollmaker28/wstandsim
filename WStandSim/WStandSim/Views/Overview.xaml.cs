@@ -40,6 +40,7 @@ namespace WStandSim
             s.CalculateNewWeather();
 
             CurrBal.Text = s.CurrentBalance.ToString();
+            RecYest.Text = s.ReceiptsYesterday.ToString();
         }
 
 
