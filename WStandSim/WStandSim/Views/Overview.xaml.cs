@@ -30,6 +30,21 @@ namespace WStandSim
 
             // Felder manuell aktualisieren
             OnAppearing();
+
+            // Abfragen, ob man pleite ist
+            if (s.IsBankrupt)
+            {
+                // Meldung dass man pleite ist
+                DisplayGameOverMessage();
+                // Instanzieren der Helper-Klasse
+                Helper h = new Helper();
+                // Aufruf der Initializer / zurücksetzen der Datenbank
+                h.Initializer();
+                // Zurücksetzen, dass Spiel gespeichert wurde.
+                s.IsGameSaved = false;
+                // Naviation zum Starbildschirm
+                Navigation.PopModalAsync();
+            }
         }
 
         // Navigation zum Lager
@@ -52,6 +67,12 @@ namespace WStandSim
             CurrBal.Text = s.CurrentBalance.ToString();
             RecYest.Text = s.ReceiptsYesterday.ToString();
             ExpYest.Text = s.ExpendituresYesterday.ToString();
+        }
+
+        // Pop-Up für Game Over
+        private void DisplayGameOverMessage()
+        {
+            DisplayAlert("Ojeeeee!", "Du bist pleite!", "Weiter...");
         }
     }
 

@@ -240,6 +240,13 @@ namespace WStandSim.Helpers
             // Limonade löschen/verkaufen und zum Kontostand hinzufügen
             if(lemonadesNumber > 0) { db.DeleteItemsFromDBAndAddToBalance(soldLemonades, 4); CurrentBalance = db.SelectCurrentBalance(); }
 
+            // tägliche Betriebskosten verrechnen
+            db.OperatingCosts();
+
+            // Abfragen ob Pleite und setzen der Property
+            if(db.SelectCurrentBalance() < -500) IsBankrupt = true;
+            
+
         }
 
         // Berechnen der akuellen Verkaufsquoten für die jeweiligen Artikel
@@ -295,5 +302,20 @@ namespace WStandSim.Helpers
             set { if (this.expendituresYesterday != value) { this.expendituresYesterday = value; ; this.NotifyPropertyChanged("ExpendituresYesterday"); } }
         }
 
+        // Für Abfrage ob pleite
+        private bool isBankrupt;
+        // Property für Pleite
+        public bool IsBankrupt
+        {
+            get { return isBankrupt; }
+            set { isBankrupt = value; }
+        }
+
+        // Property für Abfrage ob Spiel gespeichert
+        public bool IsGameSaved
+        {
+            get { return db.SelectIsGameSaved(); }
+            set { db.SetGameIsNotSaved(); }
+        }
     }
 }

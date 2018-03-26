@@ -29,13 +29,6 @@ namespace WStandSim
             await Navigation.PushModalAsync(new Overview());
         } 
 
-        //// Hilfsklasse für die Überprüfung ob der Button was macht. Kann wieder gelöscht werden.
-        //// Aufruf in Button_ClickedNewGame
-        //private void DisplayMessage()
-        //{
-        //    DisplayAlert("Achtung!", "Die Datenbank wurde angelegt!", "Weiter...");
-        //}
-
         // Button "Spiel fortsetzen"
         async private void Button_ClickedContinue(object sender, EventArgs e)
         {

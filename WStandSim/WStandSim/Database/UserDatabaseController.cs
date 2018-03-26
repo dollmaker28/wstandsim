@@ -209,6 +209,19 @@ namespace WStandSim.Database
             database.Execute("UPDATE GameSaved SET IsGameSaved = ?", true);
         }
 
+        // Vermerken, dass noch kein Spiel gespeichert wurde
+        public void SetGameIsNotSaved()
+        {
+            database.Execute("UPDATE GameSaved SET IsGameSaved = ?", false);
+        }
+
+        // Abfragen ob Spiel gespeichert ist
+        public bool SelectIsGameSaved()
+        {
+            bool s = database.Table<GameSaved>().FirstOrDefault().IsGameSaved;
+            return s;
+        }
+
         // Gesamte Spieltage
         public void SaveDay(DayCount dayCount)
         {
@@ -351,6 +364,13 @@ namespace WStandSim.Database
                 // und überschreiben
                 database.Execute("UPDATE Finance SET Amount = ? where AssetLabel = 'receiptsYesterday'", receiptsYesterday);
             }
+        }
+
+        // Betriebskosten verrechnen
+        public void OperatingCosts()
+        {
+            double c = 20;
+            database.Execute("UPDATE Finance SET Amount = Amount - ? where AssetLabel = 'currentBalance'", c);
         }
     }
 }
