@@ -379,6 +379,7 @@ namespace WStandSim.Database
         {
             double c = 5;
             database.Execute("UPDATE Finance SET Amount = Amount - ? where AssetLabel = 'currentBalance'", c);
+            database.Execute("UPDATE Finance SET Amount = Amount + ? where AssetLabel = 'expendituresYesterday'", c);
         }
     }
 }
