@@ -232,12 +232,16 @@ namespace WStandSim.Database
         //Artikel speichern => Einkauf
         public void SaveItemsToDB(int itemAmount, double price, int itemTypeID, int daysToExpire)
         {
+            // Variable für den gesamten Kaufpreis aller Waren
+            double boughtItemsPriceSum = 0;
+
             // Würste einfügen
             if (itemTypeID == 1)
                 for (int i = 0; i < itemAmount; i++)
                 {
                     database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
                     database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                    boughtItemsPriceSum += price;
                 }
 
             // Brot einfügen
@@ -246,6 +250,7 @@ namespace WStandSim.Database
                 {
                     database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
                     database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                    boughtItemsPriceSum += price;
                 }
 
             // Bier einfügen
@@ -254,6 +259,7 @@ namespace WStandSim.Database
                 {
                     database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
                     database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                    boughtItemsPriceSum += price;
                 }
 
             // Limonade einfügen
@@ -262,7 +268,11 @@ namespace WStandSim.Database
                 {
                     database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
                     database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                    boughtItemsPriceSum += price;
                 }
+
+            // Alle Ausgaben in DB speichern
+            database.Execute("UPDATE Finance SET Amount = Amount + ? where AssetLabel = 'expendituresYesterday'", boughtItemsPriceSum);
         }
 
         // Aktuellen Kontostand abrufen
