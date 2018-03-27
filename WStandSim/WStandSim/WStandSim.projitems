@@ -20,7 +20,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Database\DBBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Simulation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TestClasses\Command.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Command.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -58,6 +58,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)TestClasses\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
   </ItemGroup>
   <ItemGroup>

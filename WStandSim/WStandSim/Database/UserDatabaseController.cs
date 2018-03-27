@@ -11,8 +11,6 @@ namespace WStandSim.Database
 
         SQLiteConnection database;
 
-
-
         // DB-Verbindung aufbauen
         public UserDatabaseController()
         {
@@ -379,7 +377,7 @@ namespace WStandSim.Database
         // Betriebskosten verrechnen
         public void OperatingCosts()
         {
-            double c = 20;
+            double c = 5;
             database.Execute("UPDATE Finance SET Amount = Amount - ? where AssetLabel = 'currentBalance'", c);
         }
     }

@@ -75,5 +75,4 @@ namespace WStandSim
             DisplayAlert("Ojeeeee!", "Du bist pleite!", "Weiter...");
         }
     }
-
 }
