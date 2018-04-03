@@ -23,7 +23,12 @@ namespace WStandSim
         // Zurück
         private void Button_ClickedOverview(object sender, EventArgs e)
         {
+            // Button deaktivieren
+            IsEnabled = false;
+            // Zurück zur Startseite
             Navigation.PopModalAsync();
+            // Button aktivieren
+            IsEnabled = true;
         }
 
         // Buttons für Ein - Verkauf
@@ -73,7 +78,12 @@ namespace WStandSim
         // Button Kaufen
         private void Button_ClickedBuy(object sender, EventArgs e)
         {
+            // Button deaktivieren
+            IsEnabled = false;
+            // Kaufen aufrufen
             s.Buy();
+            // Button aktivieren
+            IsEnabled = true;
         }
     }
 } 

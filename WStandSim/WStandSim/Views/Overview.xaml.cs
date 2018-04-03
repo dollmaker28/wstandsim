@@ -23,6 +23,8 @@ namespace WStandSim
         // Tag starten
         private void Button_ClickedContinue(object sender, EventArgs e)
         {
+            // Button deaktivieren
+            IsEnabled = false;
             // Artikel verkaufen und den Kontostand aktualisieren
             s.Sell();
             s.SimulateNewDayAndSeason(); 
@@ -45,11 +47,16 @@ namespace WStandSim
                 // Naviation zum Starbildschirm
                 Navigation.PopModalAsync();
             }
+            // Button aktivieren
+            IsEnabled = true;
         }
 
         // Navigation zum Lager
         async private void Button_ClickedStock(object sender, EventArgs e)
         {
+            // Button deaktivieren
+            IsEnabled = false;
+            // neue Instanz des Lagers wenn noch keine exisitiert
             if (stock == null)
             {
                 stock = new Stock();
@@ -57,9 +64,11 @@ namespace WStandSim
             }
             else
                 await Navigation.PushModalAsync(stock);
+            // Button aktivieren
+            IsEnabled = true;
         }
 
-        // Methode zur Übernahme des Geänderten Guthabens
+        // Methode zur Übernahme des Geänderter Werte
         protected override void OnAppearing()
         {
             base.OnAppearing();
