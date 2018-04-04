@@ -22,7 +22,6 @@ namespace WStandSim
             h.Initializer();
             // Wechseln der Ansicht
             await Navigation.PushModalAsync(new Overview());
-
             // Button aktivieren
             IsEnabled = true;
         } 
