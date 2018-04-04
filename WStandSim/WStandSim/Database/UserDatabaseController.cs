@@ -233,41 +233,46 @@ namespace WStandSim.Database
             // Variable für den gesamten Kaufpreis aller Waren
             double boughtItemsPriceSum = 0;
 
+            // Transaktionsklammer auf
+            database.BeginTransaction();
+
             // Würste einfügen
             if (itemTypeID == 1)
-                for (int i = 0; i < itemAmount; i++)
-                {
-                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-                    boughtItemsPriceSum += price;
-                }
+            for (int i = 0; i < itemAmount; i++)
+            {
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                boughtItemsPriceSum += price;
+            }
 
             // Brot einfügen
             if (itemTypeID == 2)
-                for (int i = 0; i < itemAmount; i++)
-                {
-                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-                    boughtItemsPriceSum += price;
-                }
+            for (int i = 0; i < itemAmount; i++)
+            {
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                boughtItemsPriceSum += price;
+            }
 
             // Bier einfügen
             if (itemTypeID == 3)
-                for (int i = 0; i < itemAmount; i++)
-                {
-                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-                    boughtItemsPriceSum += price;
-                }
+            for (int i = 0; i < itemAmount; i++)
+            {
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                boughtItemsPriceSum += price;
+            }
 
             // Limonade einfügen
             if (itemTypeID == 4)
-                for (int i = 0; i < itemAmount; i++)
-                {
-                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-                    boughtItemsPriceSum += price;
-                }
+            for (int i = 0; i < itemAmount; i++)
+            {
+                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                boughtItemsPriceSum += price;
+            }
+            // Transaktionsklammer zu
+            database.Commit();
 
             // Alle Ausgaben in DB speichern
             database.Execute("UPDATE Finance SET Amount = Amount + ? where AssetLabel = 'expendituresYesterday'", boughtItemsPriceSum);
