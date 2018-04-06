@@ -31,7 +31,8 @@
             <Label x:Name="RecYest" Text="{Binding ReceiptsYesterday}" TextColor="GreenYellow" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>
             <Label x:Name="ExpYest" Text="{Binding ExpendituresYesterday}" TextColor="Red" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="End"/>
             <Button Clicked="Button_ClickedContinue" Text="Tag starten" Grid.Row="7" Grid.ColumnSpan="3"  BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
-            <Button Text="zum Lager" Clicked="Button_ClickedStock" Grid.Row="3" Grid.Column="0" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+            <Button Text="zum Lager" WidthRequest="2500" Clicked="Button_ClickedStock" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+            <Button Text="zur Buchhaltung" WidthRequest="2500" Clicked="Button_ClickedAccounting" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -21,6 +21,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Database\DBBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Simulation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Command.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Accounting.xaml.cs">
+      <DependentUpon>Accounting.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -59,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)TestClasses\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)BaseData\BaseDataSeasons.txt" />
@@ -72,5 +75,11 @@
     <Content Include="$(MSBuildThisFileDirectory)Images\icons8-hot-dog-48.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\icons8-slide-up-64.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\icons8-warehouse-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Accounting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

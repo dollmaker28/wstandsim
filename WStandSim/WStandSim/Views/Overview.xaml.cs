@@ -1,5 +1,6 @@
 ﻿using System;
 using WStandSim.Helpers;
+using WStandSim.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +12,7 @@ namespace WStandSim
 
         Simulation s;
         Stock stock;
+        Accounting accounting;
         public Overview()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace WStandSim
             IsEnabled = false;
             // Artikel verkaufen und den Kontostand aktualisieren
             s.Sell();
-            s.SimulateNewDayAndSeason(); 
+            s.SimulateNewDayAndSeason();
             s.CalculateNewWeather();
 
             // Felder manuell aktualisieren
@@ -64,6 +66,23 @@ namespace WStandSim
             }
             else
                 await Navigation.PushModalAsync(stock);
+            // Button aktivieren
+            IsEnabled = true;
+        }
+
+        // Navigation zur Buchhaltung
+        async private void Button_ClickedAccounting(object sender, EventArgs e)
+        {
+            // Button deaktivieren
+            IsEnabled = false;
+            // neue Instanz des Lagers wenn noch keine exisitiert
+            if (accounting == null)
+            {
+                accounting = new Accounting();
+                await Navigation.PushModalAsync(accounting);
+            }
+            else
+                await Navigation.PushModalAsync(accounting);
             // Button aktivieren
             IsEnabled = true;
         }

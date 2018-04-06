@@ -9,6 +9,14 @@ namespace WStandSim.Helpers
         // Instanzierung des DB-Controllers
         UserDatabaseController db = new UserDatabaseController();
 
+        // Konstruktor
+        public Simulation()
+        {
+            this.CurrentBalance = db.SelectCurrentBalance();
+            this.expendituresYesterday = db.SelectExpendituresYesterday();
+            this.receiptsYesterday = db.SelectReceiptsYesterday();
+        }
+
         // Berechnung der Jahreszeit für den kommenden Tag
         public void SimulateNewDayAndSeason()
         {
@@ -317,5 +325,9 @@ namespace WStandSim.Helpers
             get { return db.SelectIsGameSaved(); }
             set { db.SetGameIsNotSaved(); }
         }
+
+        // Property für die Abfrage, ob ein anderer Button bereits aktiv ist
+        bool buttonIsActive = false;
+        public bool ButtonIsActive { get; set; }
     }
 }

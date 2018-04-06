@@ -2,23 +2,36 @@
 using WStandSim.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Timers;
 
 namespace WStandSim
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Stock : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Stock : ContentPage
+    {
         // Instanzierung
         Simulation s;
-
+        Timer t;
         // Initialisieren
-        public Stock ()
-		{
-			InitializeComponent ();
+        public Stock()
+        {
+            InitializeComponent();
             s = new Simulation();
             BindingContext = s;
-            //overview = new Overview();
         }
+
+        // Timer für 
+        public void CreateTimer()
+        {
+            t = new Timer
+            {
+                Interval = 100,
+                Enabled = false
+            };
+            t.AutoReset = true;
+        }
+
+
 
         // Zurück
         private void Button_ClickedOverview(object sender, EventArgs e)
@@ -75,6 +88,149 @@ namespace WStandSim
         }
         #endregion
 
+        // Buttonfunktionen für Halten und Loslassen
+        #region UpDownButtons halten
+
+        // UP
+        private void Button_PressedSausageUP(object sender, EventArgs e)
+        {
+            if (s.ButtonIsActive == false)
+            {
+                s.ButtonIsActive = true;
+                CreateTimer();
+                t.Enabled = true;
+                t.Elapsed += Button_ClickedSausageUP;
+            }
+        }
+
+        private void Button_ReleaseSausageUP(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            s.ButtonIsActive = false;
+        }
+
+        private void Button_PressedBreadUP(object sender, EventArgs e)
+        {
+            if (s.ButtonIsActive == false)
+            {
+                s.ButtonIsActive = true;
+                CreateTimer();
+                t.Enabled = true;
+                t.Elapsed += Button_ClickedBreadUP;
+            }
+        }
+
+        private void Button_ReleaseBreadUP(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            s.ButtonIsActive = false;
+        }
+
+        private void Button_PressedBeerUP(object sender, EventArgs e)
+        {
+            if (s.ButtonIsActive == false)
+            {
+                s.ButtonIsActive = true;
+                CreateTimer();
+                t.Enabled = true;
+                t.Elapsed += Button_ClickedBeerUP;
+            }
+        }
+
+        private void Button_ReleaseBeerUP(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            s.ButtonIsActive = false;
+        }
+
+        private void Button_PressedLemonadeUP(object sender, EventArgs e)
+        {
+            if (s.ButtonIsActive == false)
+            {
+                s.ButtonIsActive = true;
+                CreateTimer();
+                t.Enabled = true;
+                t.Elapsed += Button_ClickedLemonadeUp;
+            }
+        }
+
+        private void Button_ReleaseLemonadeUP(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            s.ButtonIsActive = false;
+        }
+
+        // DOWN
+        private void Button_PressedSausageDOWN(object sender, EventArgs e)
+        {
+            if (s.ButtonIsActive == false)
+            {
+                s.ButtonIsActive = true;
+                CreateTimer();
+                t.Enabled = true;
+                t.Elapsed += Button_ClickedSausageDOWN;
+            }
+        }
+
+        private void Button_ReleaseSausageDOWN(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            s.ButtonIsActive = false;
+        }
+
+        private void Button_PressedBreadDOWN(object sender, EventArgs e)
+        {
+            if (s.ButtonIsActive == false)
+            {
+                s.ButtonIsActive = true;
+                CreateTimer();
+                t.Enabled = true;
+                t.Elapsed += Button_ClickedBreadDOWN;
+            }
+        }
+
+        private void Button_ReleaseBreadDOWN(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            s.ButtonIsActive = false;
+        }
+
+        private void Button_PressedBeerDOWN(object sender, EventArgs e)
+        {
+            if (s.ButtonIsActive == false)
+            {
+                s.ButtonIsActive = true;
+                CreateTimer();
+                t.Enabled = true;
+                t.Elapsed += Button_ClickedBeerDOWN;
+            }
+        }
+
+        private void Button_ReleaseBeerDOWN(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            s.ButtonIsActive = false;
+        }
+
+        private void Button_PressedLemonadeDOWN(object sender, EventArgs e)
+        {
+            if (s.ButtonIsActive == false)
+            {
+                s.ButtonIsActive = true;
+                CreateTimer();
+                t.Enabled = true;
+                t.Elapsed += Button_ClickedLemonadeDOWN;
+            }
+        }
+
+        private void Button_ReleaseLemonadeDOWN(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            s.ButtonIsActive = false;
+        }
+
+        #endregion
+
         // Button Kaufen
         private void Button_ClickedBuy(object sender, EventArgs e)
         {
@@ -85,5 +241,7 @@ namespace WStandSim
             // Button aktivieren
             IsEnabled = true;
         }
+
+
     }
-} 
+}
