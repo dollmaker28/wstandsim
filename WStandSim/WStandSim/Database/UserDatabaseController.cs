@@ -55,6 +55,13 @@ namespace WStandSim.Database
             database.Commit();
         }
 
+        // Savegame einfügen
+        public void AddSaveGame(GameSaved gameSaved)
+        {
+            database.Insert(gameSaved);
+            database.Commit();
+        }
+
         // Jahreszeiten einfügen
         public void AddSeason(Seasons season)
         {
@@ -216,8 +223,15 @@ namespace WStandSim.Database
         // Abfragen ob Spiel gespeichert ist
         public bool SelectIsGameSaved()
         {
-            bool s = database.Table<GameSaved>().FirstOrDefault().IsGameSaved;
-            return s;
+            // Prüfen ob ein Datensatz mit true vorhanden ist
+            int e = database.Table<GameSaved>().Count(a => a.IsGameSaved == true);
+            if (e >= 1)
+            {
+                bool s = database.Table<GameSaved>().FirstOrDefault().IsGameSaved;
+                return s;
+            }
+            // wenn kein Datensatz mit true vorhanden ist, ist entweder ein Datensatz mit false vorhanden oder es ist kein Datensatz vorhanden.
+            else { return false; }
         }
 
         // Gesamte Spieltage
@@ -238,39 +252,39 @@ namespace WStandSim.Database
 
             // Würste einfügen
             if (itemTypeID == 1)
-            for (int i = 0; i < itemAmount; i++)
-            {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-                boughtItemsPriceSum += price;
-            }
+                for (int i = 0; i < itemAmount; i++)
+                {
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                    boughtItemsPriceSum += price;
+                }
 
             // Brot einfügen
             if (itemTypeID == 2)
-            for (int i = 0; i < itemAmount; i++)
-            {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-                boughtItemsPriceSum += price;
-            }
+                for (int i = 0; i < itemAmount; i++)
+                {
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                    boughtItemsPriceSum += price;
+                }
 
             // Bier einfügen
             if (itemTypeID == 3)
-            for (int i = 0; i < itemAmount; i++)
-            {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-                boughtItemsPriceSum += price;
-            }
+                for (int i = 0; i < itemAmount; i++)
+                {
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                    boughtItemsPriceSum += price;
+                }
 
             // Limonade einfügen
             if (itemTypeID == 4)
-            for (int i = 0; i < itemAmount; i++)
-            {
-                database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
-                database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
-                boughtItemsPriceSum += price;
-            }
+                for (int i = 0; i < itemAmount; i++)
+                {
+                    database.Execute("INSERT INTO StoredItems (Bestbefore, ItemTypeID) VALUES (?, ?)", daysToExpire, itemTypeID);
+                    database.Execute("UPDATE Finance SET Amount=Amount-? where AssetLabel = 'currentBalance'", price);
+                    boughtItemsPriceSum += price;
+                }
             // Transaktionsklammer zu
             database.Commit();
 

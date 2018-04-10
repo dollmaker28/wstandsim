@@ -13,7 +13,7 @@
         <Button Clicked="Button_ClickedNewGame" Margin="60" WidthRequest="200" Text="Neues Spiel" VerticalOptions="Center"
             HorizontalOptions="Center" MinimumWidthRequest="40" BackgroundColor="Black" TextColor="Yellow" />
         <!--Button für Spiel fortsetzen-->
-        <Button Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Spiel fortsetzen" VerticalOptions="Center"
+        <Button x:Name="ButtonCont" Clicked="Button_ClickedContinue" Margin="60" WidthRequest="200" Text="Spiel fortsetzen" VerticalOptions="Center"
             HorizontalOptions="Center" BackgroundColor="Black" TextColor="Yellow"/>
         <Image x:Name="hotDogImage" />
     </StackLayout> 

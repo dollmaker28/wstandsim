@@ -1,15 +1,19 @@
 ﻿using System;
+using WStandSim.Helpers;
 using Xamarin.Forms;
 
 namespace WStandSim
 {
 	public partial class MainPage : ContentPage
 	{
-		public MainPage()
+        Simulation s;
+        public MainPage()
 		{
 			InitializeComponent();
-            this.ApplyBindings();
-		}
+            //this.ApplyBindings();
+            s = new Simulation();
+            BindingContext = s;
+        }
 
         // Button "Neues Spiel"
         async private void Button_ClickedNewGame(object sender, EventArgs e)
@@ -36,6 +40,14 @@ namespace WStandSim
             // Button aktivieren
             IsEnabled = true;
         }
-        
+
+        // Methode zur Übernahme des Geänderter Werte
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ButtonCont.IsVisible = s.IsGameSaved;
+        }
+
     }
 }

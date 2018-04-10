@@ -422,7 +422,13 @@ namespace WStandSim
 
             // Gespeichertes Spiel vermerken
             #region GameSaved
-            db.SetGameIsSaved();
+            GameSaved gameSaved = new GameSaved
+            {
+                Id = 1,
+                IsGameSaved = true
+            };
+            db.AddSaveGame(gameSaved);
+            //db.SetGameIsSaved();
             #endregion
 
             // 1. Tag als int speichern
