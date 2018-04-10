@@ -214,6 +214,8 @@ namespace WStandSim.Helpers
             CurrentBalance = db.SelectCurrentBalance();
             // Einnahmen gestern aktualisieren
             ReceiptsYesterday = db.SelectReceiptsYesterday();
+            // Lagerstand aktualisieren
+            SetAmountPerItem();
         }
 
         // Verkaufen
@@ -253,7 +255,9 @@ namespace WStandSim.Helpers
 
             // Abfragen ob Pleite und setzen der Property
             if(db.SelectCurrentBalance() < -500) IsBankrupt = true;
-            
+
+            // Lagerstand aktualisieren
+            SetAmountPerItem();
 
         }
 
@@ -327,7 +331,50 @@ namespace WStandSim.Helpers
         }
 
         // Property für die Abfrage, ob ein anderer Button bereits aktiv ist
-        bool buttonIsActive = false;
         public bool ButtonIsActive { get; set; }
+
+        #region Properties für Lagerstände und Methode zur Befüllung
+        // Wurst
+        private int sausageAmount = 0;
+        public int SausageAmount
+        {
+            get { return this.sausageAmount; }
+            set { if (this.sausageAmount != value) { this.sausageAmount = value; ; this.NotifyPropertyChanged("SausageAmount"); } }
+        }
+
+        // Brot
+        private int breadAmount = 0;
+        public int BreadAmount
+        {
+            get { return this.breadAmount; }
+            set { if (this.breadAmount != value) { this.breadAmount = value; ; this.NotifyPropertyChanged("BreadAmount"); } }
+        }
+        // Bier
+        private int beerAmount = 0;
+        public int BeerAmount
+        {
+            get { return this.beerAmount; }
+            set { if (this.beerAmount != value) { this.beerAmount = value; ; this.NotifyPropertyChanged("BeerAmount"); } }
+        }
+
+        // Limonade
+        private int lemonadeAmount = 0;
+        public int LemonadeAmount
+        {
+            get { return this.lemonadeAmount; }
+            set { if (this.lemonadeAmount != value) { this.lemonadeAmount = value; ; this.NotifyPropertyChanged("LemonadeAmount"); } }
+        }
+
+        // Methode die die Werte an die Attribute überibt, wird nach jedem Kauf und Verkauf ausgeführt
+        // Setzt die Properties auf die entsprechenden Werte
+        public void SetAmountPerItem()
+        {
+            db.SelectAmountPerItem(out int sausagesNumber, out int breadNumber, out int beerNumber, out int lemonadesNumber);
+            SausageAmount = sausagesNumber;
+            BreadAmount = breadNumber;
+            BeerAmount = beerNumber;
+            LemonadeAmount = lemonadesNumber;
+        }
+        #endregion
     }
 }

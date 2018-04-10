@@ -12,6 +12,7 @@ namespace WStandSim
         // Instanzierung
         Simulation s;
         Timer t;
+
         // Initialisieren
         public Stock()
         {
@@ -20,7 +21,7 @@ namespace WStandSim
             BindingContext = s;
         }
 
-        // Timer für 
+        // Timer für Buttons
         public void CreateTimer()
         {
             t = new Timer
@@ -30,8 +31,6 @@ namespace WStandSim
             };
             t.AutoReset = true;
         }
-
-
 
         // Zurück
         private void Button_ClickedOverview(object sender, EventArgs e)
@@ -89,7 +88,7 @@ namespace WStandSim
         #endregion
 
         // Buttonfunktionen für Halten und Loslassen
-        #region UpDownButtons halten
+        #region UpDownButtons halten/loslassen
 
         // UP
         private void Button_PressedSausageUP(object sender, EventArgs e)
@@ -228,7 +227,6 @@ namespace WStandSim
             t.Enabled = false;
             s.ButtonIsActive = false;
         }
-
         #endregion
 
         // Button Kaufen
@@ -240,8 +238,22 @@ namespace WStandSim
             s.Buy();
             // Button aktivieren
             IsEnabled = true;
+            // Manuell aktualisieren
+            OnAppearing();
         }
 
+        // Methode zur Übernahme des Geänderter Werte
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            // Property muss aktualisiert werden, da Stock eine andere Instanz der Simulation hat, als Overview
+            s.SetAmountPerItem();
+
+            SausAm.Text = s.SausageAmount.ToString();
+            BreadAm.Text = s.BreadAmount.ToString();
+            BeerAm.Text = s.BeerAmount.ToString();
+            LemonAm.Text = s.LemonadeAmount.ToString();
+        }
 
     }
 }

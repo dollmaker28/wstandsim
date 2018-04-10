@@ -31,6 +31,7 @@ namespace WStandSim
             s.Sell();
             s.SimulateNewDayAndSeason();
             s.CalculateNewWeather();
+            s.SetAmountPerItem();
 
             // Felder manuell aktualisieren
             OnAppearing();
@@ -68,6 +69,7 @@ namespace WStandSim
                 await Navigation.PushModalAsync(stock);
             // Button aktivieren
             IsEnabled = true;
+
         }
 
         // Navigation zur Buchhaltung
