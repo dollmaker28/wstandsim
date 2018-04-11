@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="Blue"
              xmlns:s="clr-namespace:WStandSim.Helpers"
-             x:Class="WStandSim.Stock">
+             x:Class="WStandSim.Stock"
+             xmlns:i="clr-namespace:WStandSim.Images">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -19,63 +23,15 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Überschriften für Lagerstand -->
-            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Text="Wurst" Grid.Column="0" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label Text="Brot" Grid.Column="1" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label Text="Bier" Grid.Column="2" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label Text="Limo" Grid.Column="3" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-
-            </Grid>
-            
-            <!-- Anzeige Lagerstand -->
-            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label x:Name="SausAm" Text="{Binding SausageAmount}" Grid.Column="0" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label x:Name="BreadAm" Text="{Binding BreadAmount}" Grid.Column="1" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label x:Name="BeerAm" Text="{Binding BeerAmount}" Grid.Column="2" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label x:Name="LemonAm" Text="{Binding LemonadeAmount}" Grid.Column="3" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-
-            </Grid>
-
-            <!-- Überschriften -->
-            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Text="Wurst" Grid.Column="0" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label Text="Brot" Grid.Column="1" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label Text="Bier" Grid.Column="2" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Label Text="Limo" Grid.Column="3" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
+            <ListView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 
-            </Grid>
-
-            <!-- ButtonGrid -->
-            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+            </ListView>
+            
+            <!-- Anzeige Lagerstand und Buttons-->
+            <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -85,28 +41,50 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+
+                <Label Text="Artikel" Grid.Column="0" Grid.Row="0" TextColor="White" XAlign="Center" YAlign="Center"/>
+                <Label Text="Lager" Grid.Column="0" Grid.Row="1" TextColor="White" XAlign="Center" YAlign="Center"/>
+                <Label Text="Kaufen" Grid.Column="0" Grid.Row="2" TextColor="White" XAlign="Center" YAlign="Center"/>
+                <Label Text="Plus" Grid.Column="0" Grid.Row="3" TextColor="White" XAlign="Center" YAlign="Center"/>
+                <Label Text="Minus" Grid.Column="0" Grid.Row="4" TextColor="White" XAlign="Center" YAlign="Center"/>
+
+                <Label Text="Wurst" Grid.Column="1" Grid.Row="0" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Label Text="Brot" Grid.Column="2" Grid.Row="0" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Label Text="Bier" Grid.Column="3" Grid.Row="0" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Label Text="Limo" Grid.Column="4" Grid.Row="0" XAlign="Center" YAlign="Center" TextColor="White" />
+
+                <Label x:Name="SausAm" Text="{Binding SausageAmount}" Grid.Column="1" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Label x:Name="BreadAm" Text="{Binding BreadAmount}" Grid.Column="2" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Label x:Name="BeerAm" Text="{Binding BeerAmount}" Grid.Column="3" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Label x:Name="LemonAm" Text="{Binding LemonadeAmount}" Grid.Column="4" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
+
                 <!-- Buttons -->
                 <!--Wurst-->
-                <Button Text="↑" Pressed="Button_PressedSausageUP" Released="Button_ReleaseSausageUP" Clicked="Button_ClickedSausageUP" Grid.Column="0" Grid.Row="0" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="{Binding Sausages}" Grid.Column="0" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Button Text="↓" Pressed="Button_PressedSausageDOWN" Released="Button_ReleaseSausageDOWN" Clicked="Button_ClickedSausageDOWN" Grid.Column="0" Grid.Row="2" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding Sausages}" Grid.Column="1" Grid.Row="2" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Button Text="↑" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Pressed="Button_PressedSausageUP" Released="Button_ReleaseSausageUP" Clicked="Button_ClickedSausageUP" Grid.Column="1" Grid.Row="3" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Button Text="↓" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Pressed="Button_PressedSausageDOWN" Released="Button_ReleaseSausageDOWN" Clicked="Button_ClickedSausageDOWN" Grid.Column="1" Grid.Row="4" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <!--Brot-->
-                <Button Text="↑" Pressed="Button_PressedBreadUP" Released="Button_ReleaseBreadUP" Clicked="Button_ClickedBreadUP" Grid.Column="1" Grid.Row="0" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="{Binding Bread}" Grid.Column="1" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Button Text="↓" Pressed="Button_PressedBreadDOWN" Released="Button_ReleaseBreadDOWN" Clicked="Button_ClickedBreadDOWN" Grid.Column="1" Grid.Row="2" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding Bread}" Grid.Column="2" Grid.Row="2" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Button Text="↑" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Pressed="Button_PressedBreadUP" Released="Button_ReleaseBreadUP" Clicked="Button_ClickedBreadUP" Grid.Column="2" Grid.Row="3" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Button Text="↓" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Pressed="Button_PressedBreadDOWN" Released="Button_ReleaseBreadDOWN" Clicked="Button_ClickedBreadDOWN" Grid.Column="2" Grid.Row="4" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <!--Bier-->
-                <Button Text="↑" Pressed="Button_PressedBeerUP" Released="Button_ReleaseBeerUP" Clicked="Button_ClickedBeerUP" Grid.Column="2" Grid.Row="0" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="{Binding Beer}" Grid.Column="2" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Button Text="↓" Pressed="Button_PressedBeerDOWN" Released="Button_ReleaseBeerDOWN" Clicked="Button_ClickedBeerDOWN" Grid.Column="2" Grid.Row="2" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding Beer}" Grid.Column="3" Grid.Row="2" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Button Text="↑" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Pressed="Button_PressedBeerUP" Released="Button_ReleaseBeerUP" Clicked="Button_ClickedBeerUP" Grid.Column="3" Grid.Row="3" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Button Text="↓" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Pressed="Button_PressedBeerDOWN" Released="Button_ReleaseBeerDOWN" Clicked="Button_ClickedBeerDOWN" Grid.Column="3" Grid.Row="4" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <!--Limonade-->
-                <Button Text="↑" Pressed="Button_PressedLemonadeUP" Released="Button_ReleaseLemonadeUP" Clicked="Button_ClickedLemonadeUp" Grid.Column="3" Grid.Row="0" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Text="{Binding Lemonades}" Grid.Column="3" Grid.Row="1" XAlign="Center" YAlign="Center" TextColor="White" />
-                <Button Text="↓" Pressed="Button_PressedLemonadeDOWN" Released="Button_ReleaseLemonadeDOWN" Clicked="Button_ClickedLemonadeDOWN" Grid.Column="3" Grid.Row="2" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="{Binding Lemonades}" Grid.Column="4" Grid.Row="2" XAlign="Center" YAlign="Center" TextColor="White" />
+                <Button Text="↑" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Pressed="Button_PressedLemonadeUP" Released="Button_ReleaseLemonadeUP" Clicked="Button_ClickedLemonadeUp" Grid.Column="4" Grid.Row="3" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Button Text="↓" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Pressed="Button_PressedLemonadeDOWN" Released="Button_ReleaseLemonadeDOWN" Clicked="Button_ClickedLemonadeDOWN" Grid.Column="4" Grid.Row="4" FontSize="Micro" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+
             </Grid>
 
-            <Button Text="zur Übersicht" Clicked="Button_ClickedOverview" Grid.Row="0" Grid.Column="0" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
-            <Button Text="Kaufen" Clicked="Button_ClickedBuy" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            
+
+            <Button Text="zur Übersicht" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Clicked="Button_ClickedOverview" Grid.Row="1" Grid.Column="0" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Button Text="Kaufen" BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Clicked="Button_ClickedBuy" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Blue"
              x:Class="WStandSim.Views.Accounting">
     <ContentPage.Content>
         <Grid>
@@ -17,7 +18,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Text="Übersicht" Clicked="Button_ClickedOverview" Grid.Row="7" Grid.Column="1" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+            <Button BorderWidth="2" BorderColor="GreenYellow" BorderRadius="8" Text="Übersicht" Clicked="Button_ClickedOverview" Grid.Row="7" Grid.Column="1" BackgroundColor="Black" TextColor="Yellow" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
