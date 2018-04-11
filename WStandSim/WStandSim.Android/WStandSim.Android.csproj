@@ -94,9 +94,10 @@
     <Content Include="Resources\drawable\icons8-checkout-64.png" />
     <Content Include="Resources\drawable\icons8-down-button-64.png" />
     <Content Include="Resources\drawable\icons8-hot-dog-40.png" />
-    <Content Include="Resources\drawable\iconHotDog.png" />
+    <Content Include="Resources\drawable\iconhotdog.png" />
     <Content Include="Resources\drawable\icons8-slide-up-64.png" />
     <Content Include="Resources\drawable\icons8-warehouse-64.png" />
+    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
   </ItemGroup>
   <Import Project="..\WStandSim\WStandSim.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
