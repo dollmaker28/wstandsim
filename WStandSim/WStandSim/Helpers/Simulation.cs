@@ -292,7 +292,7 @@ namespace WStandSim.Helpers
         // Property für aktuellen Kontostand
         public double CurrentBalance
         {
-            get { currentBalance = db.SelectCurrentBalance(); return this.currentBalance; }
+            get { currentBalance = db.SelectCurrentBalance(); return Math.Round(this.currentBalance, 2); }
             set { if (this.currentBalance != value) { this.currentBalance = value; ; this.NotifyPropertyChanged("CurrentBalance"); } }
         }
 
@@ -301,7 +301,7 @@ namespace WStandSim.Helpers
         // Property für Einnahmen
         public double ReceiptsYesterday
         {
-            get { receiptsYesterday = db.SelectReceiptsYesterday(); return this.receiptsYesterday; }
+            get { receiptsYesterday = db.SelectReceiptsYesterday(); return Math.Round(this.receiptsYesterday, 2); }
             set { if (this.receiptsYesterday != value) { this.receiptsYesterday = value; ; this.NotifyPropertyChanged("ReceiptsYesterday"); } }
         }
 
@@ -310,7 +310,7 @@ namespace WStandSim.Helpers
         // Property für Ausgaben
         public double ExpendituresYesterday
         {
-            get { expendituresYesterday = db.SelectExpendituresYesterday(); return this.expendituresYesterday; }
+            get { expendituresYesterday = db.SelectExpendituresYesterday(); return Math.Round(this.expendituresYesterday, 2); }
             set { if (this.expendituresYesterday != value) { this.expendituresYesterday = value; ; this.NotifyPropertyChanged("ExpendituresYesterday"); } }
         }
 
